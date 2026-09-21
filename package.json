@@ -12,6 +12,7 @@
     "dev": "node --env-file=.env main.ts",
     "demo:injection": "node --env-file=.env demos/prompt-injection-detector.ts",
     "demo:effort": "node --env-file=.env demos/effort-evaluator.ts",
+    "demo:fast": "node --env-file=.env demos/fast-path.ts",
     "demo:docs": "node --env-file=.env demos/docs-explorer.ts",
     "typecheck": "tsc --noEmit",
     "lint": "oxlint",

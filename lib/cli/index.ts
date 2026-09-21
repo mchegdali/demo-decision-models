@@ -1,1 +1,7 @@
-export { formatDocsAnswer, formatEffortVerdict, formatInjectionVerdict } from "./render.ts";
+export {
+  formatDocsAnswer,
+  formatEffortVerdict,
+  formatFastToolVerdict,
+  formatInjectionVerdict,
+  formatLanguageVerdict,
+} from "./render.ts";

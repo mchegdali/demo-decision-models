@@ -1,11 +1,23 @@
 import { parseArgs } from "node:util";
-import { formatDocsAnswer, formatEffortVerdict, formatInjectionVerdict } from "./lib/cli/index.ts";
+import type { EffortVerdict } from "./features/agents/classifiers/effort-evaluator/index.ts";
+import type { FastToolVerdict } from "./features/agents/classifiers/fast-tool-detector/index.ts";
+import type { LanguageVerdict } from "./features/agents/classifiers/language-detector/index.ts";
+import type { PromptInjectionVerdict } from "./features/agents/classifiers/prompt-injection-detector/index.ts";
+import type { DocsAnswer } from "./features/agents/docs-explorer/index.ts";
+import {
+  formatDocsAnswer,
+  formatEffortVerdict,
+  formatFastToolVerdict,
+  formatInjectionVerdict,
+  formatLanguageVerdict,
+} from "./lib/cli/index.ts";
 
 const USAGE = `Usage: pnpm dev [--json] <question>
        pnpm dev --help
 
-Screens a question for prompt injection, judges how much effort it deserves, then
-answers it by searching and reading documentation on the web.
+Screens a question for prompt injection and detects its language. A greeting, the time,
+or the weather is answered by code alone, with no language model. Anything else has its
+effort judged, then is answered by searching and reading documentation on the web.
 
 Options:
   --json       Print a single JSON result to stdout instead of human-readable text.
@@ -56,51 +68,70 @@ function parseCli(argv: readonly string[]): Cli {
   return { json: parsed.values.json ?? false, question };
 }
 
-/** Fails fast, listing every missing required API key at once. */
-function checkRequiredEnv(): void {
-  const missing = ["TYPESAFE_AI_API_KEY", "OPENAI_API_KEY"].filter((name) => !process.env[name]);
+/** Fails fast, listing every missing API key of `names` at once. */
+function checkRequiredEnv(names: readonly string[]): void {
+  const missing = names.filter((name) => !process.env[name]);
   if (missing.length > 0) {
     throw new Error(`Missing required environment variable(s): ${missing.join(", ")}.`);
   }
 }
 
+/** Everything one run learned, for `--json`. Fields a run never reached are `null`. */
+interface Report {
+  readonly question: string;
+  readonly screening: PromptInjectionVerdict;
+  readonly language: LanguageVerdict;
+  readonly fastTool: FastToolVerdict;
+  readonly effort: EffortVerdict | null;
+  /** The code-only reply, when the fast path answered. */
+  readonly fastAnswer: string | null;
+  /** The docs-explorer answer, when the full pipeline ran. */
+  readonly answer: DocsAnswer | null;
+}
+
+function printJson(report: Report): void {
+  console.log(JSON.stringify(report, null, 2));
+}
+
 async function main(): Promise<void> {
   const cli = parseCli(process.argv.slice(2));
-  checkRequiredEnv();
+  checkRequiredEnv(["TYPESAFE_AI_API_KEY"]);
 
-  const [{ detectPromptInjection }, { evaluateEffort }, { exploreDocs, DOCS_EXPLORER_EFFORTS }] =
-    await Promise.all([
-      import("./features/agents/classifiers/prompt-injection-detector/index.ts"),
-      import("./features/agents/classifiers/effort-evaluator/index.ts"),
-      import("./features/agents/docs-explorer/index.ts"),
-    ]);
+  const [
+    { detectPromptInjection },
+    { detectLanguage, replyLanguage },
+    { detectFastTool, isHandled },
+  ] = await Promise.all([
+    import("./features/agents/classifiers/prompt-injection-detector/index.ts"),
+    import("./features/agents/classifiers/language-detector/index.ts"),
+    import("./features/agents/classifiers/fast-tool-detector/index.ts"),
+  ]);
 
-  // Both classifiers judge the same raw question, over independent state, so they run in
-  // one parallel round trip. The effort call is wasted when the input is later blocked, but
-  // that one cheap request is cheaper than serializing the two calls for every allowed input.
-  const [injection, effort] = await Promise.all([
+  // Round 1 — TypeSafe only. The three classifiers judge the same raw question over
+  // independent state, so they share one parallel round trip. None of them needs OpenAI.
+  const [injection, language, fastTool] = await Promise.all([
     detectPromptInjection({
       assistantPurpose: ASSISTANT_PURPOSE,
       inputSource: "user-message",
       input: cli.question,
     }),
-    evaluateEffort({
-      prompt: cli.question,
-      assistantPurpose: ASSISTANT_PURPOSE,
-      availableTools: AVAILABLE_TOOLS,
-      efforts: DOCS_EXPLORER_EFFORTS,
-    }),
+    detectLanguage({ text: cli.question }),
+    detectFastTool({ prompt: cli.question }),
   ]);
+
+  const report: Report = {
+    question: cli.question,
+    screening: injection,
+    language,
+    fastTool,
+    effort: null,
+    fastAnswer: null,
+    answer: null,
+  };
 
   if (injection.action === "block") {
     if (cli.json) {
-      console.log(
-        JSON.stringify(
-          { question: cli.question, screening: injection, effort, answer: null },
-          null,
-          2,
-        ),
-      );
+      printJson(report);
     } else {
       console.error(`Refusing to answer: this input looks like a prompt injection attempt.`);
       console.error(formatInjectionVerdict(injection));
@@ -114,6 +145,41 @@ async function main(): Promise<void> {
       console.error("Warning: this input was flagged for review before answering.");
       console.error(formatInjectionVerdict(injection));
     }
+    console.error(formatLanguageVerdict(language));
+    console.error(formatFastToolVerdict(fastTool));
+  }
+
+  // Fast path: a greeting, the time, or the weather is composed in code. The effort evaluator
+  // and docs-explorer are never imported, so the OpenAI provider is never constructed and
+  // OPENAI_API_KEY is not needed.
+  if (isHandled(fastTool)) {
+    const { answerFast } = await import("./features/fast-answers/index.ts");
+    const fastAnswer = await answerFast(fastTool, replyLanguage(language));
+
+    if (cli.json) {
+      printJson({ ...report, fastAnswer });
+    } else {
+      console.log(fastAnswer);
+    }
+    return;
+  }
+
+  // Round 2 — the full pipeline. The effort call now waits for round 1 instead of racing it:
+  // one extra cheap round trip here is what lets a fast-path prompt skip it entirely.
+  checkRequiredEnv(["OPENAI_API_KEY"]);
+  const [{ evaluateEffort }, { exploreDocs, DOCS_EXPLORER_EFFORTS }] = await Promise.all([
+    import("./features/agents/classifiers/effort-evaluator/index.ts"),
+    import("./features/agents/docs-explorer/index.ts"),
+  ]);
+
+  const effort = await evaluateEffort({
+    prompt: cli.question,
+    assistantPurpose: ASSISTANT_PURPOSE,
+    availableTools: AVAILABLE_TOOLS,
+    efforts: DOCS_EXPLORER_EFFORTS,
+  });
+
+  if (!cli.json) {
     console.error(formatEffortVerdict(effort));
   }
 
@@ -122,13 +188,7 @@ async function main(): Promise<void> {
   });
 
   if (cli.json) {
-    console.log(
-      JSON.stringify(
-        { question: cli.question, screening: injection, effort, answer: result.answer },
-        null,
-        2,
-      ),
-    );
+    printJson({ ...report, effort, answer: result.answer });
   } else {
     console.log(formatDocsAnswer(result));
   }

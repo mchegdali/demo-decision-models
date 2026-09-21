@@ -49,7 +49,9 @@ export const MAX_STEPS = 12;
  * Below this, the weakest (minimum) confidence across the four Score answers is treated
  * as "the model isn't sure how much this task needs" and the verdict is bumped one rung
  * up the ladder rather than left as-is — for an effort budget, uncertainty should resolve
- * toward overspending, not toward starving the agent.
+ * toward overspending, not toward starving the agent. The one exception is an explicit cap
+ * (a trivial lookup, or a request for brevity) that decided the final composite: doubt about
+ * how hard the task is must not override a direct "this needs little" signal.
  */
 export const LOW_CONFIDENCE_THRESHOLD = 0.4;
 
@@ -90,20 +92,27 @@ export function routeEffort(
     dimensions.stakes * DIMENSION_WEIGHTS.stakes +
     dimensions.ambiguity * DIMENSION_WEIGHTS.ambiguity;
 
+  // Whether the composite's final value came from an explicit "keep it cheap" cap. Tracked in
+  // the same order as the overrides: a depth floor outranks an inferred trivial-lookup cap, and
+  // a brevity cap outranks everything.
+  let capped = false;
   if (overrides.isTrivialLookup >= TRIVIAL_LOOKUP_PROBABILITY_THRESHOLD) {
     effort = Math.min(effort, TRIVIAL_LOOKUP_EFFORT_CAP);
+    capped = true;
   }
   if (overrides.requestsDepth >= REQUESTS_DEPTH_PROBABILITY_THRESHOLD) {
     effort = Math.max(effort, REQUESTS_DEPTH_EFFORT_FLOOR);
+    capped = false;
   }
   if (overrides.requestsBrevity >= REQUESTS_BREVITY_PROBABILITY_THRESHOLD) {
     effort = Math.min(effort, REQUESTS_BREVITY_EFFORT_CAP);
+    capped = true;
   }
 
   const normalized = clamp(effort / MAX_EFFORT, 0, 1);
   let index = clamp(Math.round(normalized * (ladder.length - 1)), 0, ladder.length - 1);
 
-  if (confidence !== undefined && confidence < LOW_CONFIDENCE_THRESHOLD) {
+  if (!capped && confidence !== undefined && confidence < LOW_CONFIDENCE_THRESHOLD) {
     index = clamp(index + 1, 0, ladder.length - 1);
   }
 

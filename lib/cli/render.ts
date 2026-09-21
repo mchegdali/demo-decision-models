@@ -1,6 +1,32 @@
 import type { EffortVerdict } from "../../features/agents/classifiers/effort-evaluator/index.ts";
+import type { FastToolVerdict } from "../../features/agents/classifiers/fast-tool-detector/index.ts";
+import type { LanguageVerdict } from "../../features/agents/classifiers/language-detector/index.ts";
 import type { PromptInjectionVerdict } from "../../features/agents/classifiers/prompt-injection-detector/index.ts";
 import type { ExploreDocsResult } from "../../features/agents/docs-explorer/index.ts";
+
+function formatConfidence(confidence: number | undefined): string {
+  return confidence === undefined ? "n/a" : confidence.toFixed(2);
+}
+
+/** Formats a language verdict for console output. */
+export function formatLanguageVerdict(verdict: LanguageVerdict): string {
+  const lines = [
+    `language=${verdict.language} raw=${verdict.rawChoice} confidence=${formatConfidence(verdict.confidence)}`,
+    `probabilities=${JSON.stringify(verdict.probabilities ?? null)}`,
+  ];
+  return lines.join("\n");
+}
+
+/** Formats a fast-tool verdict for console output. */
+export function formatFastToolVerdict(verdict: FastToolVerdict): string {
+  const lines = [
+    `fastTool=${verdict.action} intent=${verdict.intent} when=${verdict.when} ` +
+      `location=${verdict.location ?? "-"} reason=${verdict.reason} ` +
+      `confidence=${formatConfidence(verdict.confidence)}`,
+    `signals=${JSON.stringify(verdict.signals)}`,
+  ];
+  return lines.join("\n");
+}
 
 /** Formats a prompt-injection verdict for console output. */
 export function formatInjectionVerdict(verdict: PromptInjectionVerdict): string {
