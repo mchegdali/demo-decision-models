@@ -1,0 +1,31 @@
+import { experimental_evaluate as evaluate } from "ai";
+import { evaluatorModel } from "../../../../lib/ai/evaluator-model.ts";
+import { routePromptInjection, type PromptInjectionVerdict } from "./policy.ts";
+import { PROMPT_INJECTION_QUESTIONS, type PromptInjectionState } from "./questions.ts";
+
+/**
+ * Screens untrusted text for prompt-injection attempts using one batched TypeSafe
+ * `evaluate` request: several independent boolean judgments plus a severity score
+ * over the same shared state, routed to allow/review/block by `policy.ts`.
+ */
+export async function detectPromptInjection(
+  state: PromptInjectionState,
+): Promise<PromptInjectionVerdict> {
+  const { answers } = await evaluate({
+    model: evaluatorModel,
+    state,
+    questions: PROMPT_INJECTION_QUESTIONS,
+  });
+
+  const signals = {
+    instructionOverride: answers.instructionOverride.probability,
+    personaHijack: answers.personaHijack.probability,
+    embeddedDirective: answers.embeddedDirective.probability,
+    dataExfiltration: answers.dataExfiltration.probability,
+  };
+
+  return routePromptInjection(signals, answers.severity.score);
+}
+
+export type { PromptInjectionAction, PromptInjectionVerdict } from "./policy.ts";
+export type { PromptInjectionState } from "./questions.ts";

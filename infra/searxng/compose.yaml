@@ -1,0 +1,36 @@
+name: test-typesafe-ai
+
+services:
+  searxng:
+    image: docker.io/searxng/searxng:2026.9.19-fe5bdd1bf
+    pull_policy: missing
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:8080"
+    env_file:
+      - path: ../../.env
+        required: false
+    environment:
+      SEARXNG_BASE_URL: http://localhost:8080/
+      SEARXNG_SECRET: ${SEARXNG_SECRET:-local-dev-secret-change-me}
+    volumes:
+      - type: bind
+        source: ./settings.yml
+        target: /etc/searxng/settings.yml
+        read_only: true
+    tmpfs:
+      - /var/cache/searxng
+    cap_drop: [ALL]
+    cap_add: [CHOWN, SETGID, SETUID]
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:8080/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+      start_interval: 2s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

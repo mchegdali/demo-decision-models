@@ -1,0 +1,27 @@
+# Minimal overrides on top of SearXNG's shipped defaults. See:
+# https://docs.searxng.org/admin/settings/index.html
+use_default_settings: true
+
+general:
+  instance_name: "test-typesafe-ai (local)"
+
+server:
+  bind_address: "0.0.0.0"
+  # The published port is already loopback-only (compose.yaml); this instance is
+  # local dev infrastructure, not a public one.
+  public_instance: false
+  # Off, or SearXNG rejects our tool's requests as bot traffic.
+  limiter: false
+  secret_key: "overridden-by-SEARXNG_SECRET-env-var"
+
+search:
+  # "json" is required for the web-search tool's API calls — the default is
+  # html-only and the JSON endpoint 403s without this. Accepts only
+  # html/csv/json/rss; this is SearXNG's own response format, not the content
+  # type of pages it finds.
+  formats:
+    - html
+    - json
+
+outgoing:
+  request_timeout: 6.0

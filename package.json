@@ -1,0 +1,53 @@
+{
+  "name": "test-typesafe-ai",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --env-file=.env main.ts",
+    "demo:injection": "node --env-file=.env demos/prompt-injection-detector.ts",
+    "demo:effort": "node --env-file=.env demos/effort-evaluator.ts",
+    "demo:docs": "node --env-file=.env demos/docs-explorer.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
+    "searxng:up": "docker compose -f infra/searxng/compose.yaml up -d --wait",
+    "searxng:down": "docker compose -f infra/searxng/compose.yaml down",
+    "searxng:logs": "docker compose -f infra/searxng/compose.yaml logs -f"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "4.0.70",
+    "@ai-sdk/typesafe-ai": "3.0.3",
+    "@mozilla/readability": "0.6.0",
+    "@opencode-ai/models": "^0.0.78",
+    "ai": "7.0.105",
+    "better-result": "3.0.1",
+    "jsdom": "30.1.0",
+    "turndown": "7.2.4",
+    "turndown-plugin-gfm": "1.0.2",
+    "zod": "^4.1.8"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^26.6.1",
+    "@types/turndown": "^5.0.6",
+    "oxfmt": "0.68.0",
+    "oxlint": "1.83.0",
+    "typescript": "7.0.2"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.4.2",
+      "onFail": "download"
+    }
+  },
+  "packageManager": "pnpm@12.4.2"
+}

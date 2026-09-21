@@ -1,0 +1,35 @@
+{
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
+  "permissions": {
+    "allow": ["Bash(git add:*)", "Read(./.env.example)"],
+    "deny": ["Read(*.env)", "Bash(curl:*)"],
+    "ask": ["Bash(gh pr create:*)", "Bash(git commit:*)"],
+    "defaultMode": "default"
+  },
+  "disableClaudeAiConnectors": true,
+  "disableBundledSkills": true,
+  "disableRemoteControl": true,
+  "disableWorkflows": true,
+  "disableArtifact": true,
+  "enabledPlugins": {
+    "typesafe@typesafe-ai": true
+  },
+  "autoMemoryEnabled": false,
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/format-and-lint.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

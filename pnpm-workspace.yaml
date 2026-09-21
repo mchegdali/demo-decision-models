@@ -1,0 +1,4 @@
+minimumReleaseAgeExclude:
+  - "@ai-sdk/openai@4.0.70"
+  - "@ai-sdk/provider-utils@5.0.44"
+  - "@ai-sdk/typesafe-ai@3.0.3"
