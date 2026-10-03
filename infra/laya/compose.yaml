@@ -1,0 +1,45 @@
+name: test-typesafe-ai
+
+services:
+  laya:
+    build:
+      context: .
+      args:
+        LAYA_VERSION: "0.3.21"
+    image: test-typesafe-ai/laya:0.3.21
+    pull_policy: build
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      # Only LAYA_* are forwarded (interpolated from --env-file ../../.env); other secrets stay out.
+      LAYA_API_KEY: ${LAYA_API_KEY:-}
+      LAYA_THREADS: ${LAYA_THREADS:-}
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    deploy:
+      resources:
+        limits:
+          memory: 4g
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=4)",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 120s
+      start_interval: 2s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

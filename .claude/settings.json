@@ -6,7 +6,7 @@
   },
   "permissions": {
     "allow": ["Bash(git add:*)", "Read(./.env.example)"],
-    "deny": ["Read(*.env)", "Bash(curl:*)"],
+    "deny": ["Read(*.env)"],
     "ask": ["Bash(gh pr create:*)", "Bash(git commit:*)"],
     "defaultMode": "default"
   },

@@ -21,7 +21,11 @@
     "format:check": "oxfmt --check .",
     "searxng:up": "docker compose -f infra/searxng/compose.yaml up -d --wait",
     "searxng:down": "docker compose -f infra/searxng/compose.yaml down",
-    "searxng:logs": "docker compose -f infra/searxng/compose.yaml logs -f"
+    "searxng:logs": "docker compose -f infra/searxng/compose.yaml logs -f",
+    "laya:build": "docker compose --env-file .env -f infra/laya/compose.yaml build",
+    "laya:up": "docker compose --env-file .env -f infra/laya/compose.yaml up -d --wait",
+    "laya:down": "docker compose --env-file .env -f infra/laya/compose.yaml down",
+    "laya:logs": "docker compose --env-file .env -f infra/laya/compose.yaml logs -f"
   },
   "dependencies": {
     "@ai-sdk/openai": "4.0.70",
