@@ -70,11 +70,15 @@ const failed: FailedRun[] = files
 const MODEL_ORDER = [
   "jev",
   "clef-flash",
+  "clef-flash-ollama",
   "clef",
+  "clef-ollama",
   "kev-0.8b",
   "kev-4b",
   "kev-9b",
   "nimble",
+  "tev1-0.8b",
+  "tev1-4b",
   "laya",
   "laya-typed",
 ];

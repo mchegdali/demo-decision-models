@@ -5,13 +5,18 @@ import { requireEnv } from "../env.ts";
 /**
  * Which System One backend answers `experimental_evaluate` calls:
  * - `typesafe`: TypeSafe's hosted Jev (default).
+ * - `ollama`: a decision model from the Ollama library (Clef-flash, Clef, Nimble, Tev1) on
+ *   Ollama's native /v1/systemone (see infra/ollama), at `OLLAMA_BASE_URL`.
  * - `laya`: self-hosted laya-serve (see infra/laya), which speaks the same /v1/systemone protocol.
- * - `local`: any other self-hosted /v1/systemone server — Clef (infra/clef), Kev (infra/kev),
- *   Nimble on Ollama — at `EVALUATOR_BASE_URL`, serving `EVALUATOR_MODEL_ID`.
+ * - `local`: any other self-hosted /v1/systemone server — e.g. Kev (infra/kev) — at
+ *   `EVALUATOR_BASE_URL`, serving `EVALUATOR_MODEL_ID`.
  */
-export type EvaluatorBackend = "typesafe" | "laya" | "local";
+export type EvaluatorBackend = "typesafe" | "ollama" | "laya" | "local";
 
-const EVALUATOR_BACKENDS: readonly EvaluatorBackend[] = ["typesafe", "laya", "local"];
+const EVALUATOR_BACKENDS: readonly EvaluatorBackend[] = ["typesafe", "ollama", "laya", "local"];
+
+/** Ollama's Clef-flash: the smallest CUDA tag it publishes (see docs/BENCHMARK_RESULTS.md). */
+const DEFAULT_OLLAMA_MODEL_ID = "clef-flash:9b-q8_0";
 
 function resolveEvaluatorBackend(): EvaluatorBackend {
   const value = process.env.EVALUATOR_BACKEND?.trim() || "typesafe";
@@ -55,6 +60,15 @@ function configuredEvaluator(): { modelId: string; provider: ReturnType<typeof c
           baseURL: process.env.LAYA_BASE_URL?.trim() || "http://localhost:8000/v1",
           // The provider insists on a key; laya-serve only checks it when LAYA_API_KEY is set.
           apiKey: process.env.LAYA_API_KEY?.trim() || "laya-local",
+        }),
+      };
+    case "ollama":
+      return {
+        modelId: process.env.EVALUATOR_MODEL_ID?.trim() || DEFAULT_OLLAMA_MODEL_ID,
+        provider: createTypeSafeAi({
+          baseURL: process.env.OLLAMA_BASE_URL?.trim() || "http://localhost:11434/v1",
+          // The provider insists on a key; Ollama ignores it.
+          apiKey: "ollama",
         }),
       };
     case "local":

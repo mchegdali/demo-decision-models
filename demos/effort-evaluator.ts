@@ -1,4 +1,5 @@
 import { formatEffortVerdict } from "../lib/cli/index.ts";
+import { evaluatorEnv } from "../lib/env.ts";
 
 /** Mirrors `main.ts`'s constants — kept local so this demo has no dependency on the CLI. */
 const ASSISTANT_PURPOSE =
@@ -40,12 +41,11 @@ export async function runEffortEvaluatorDemo(): Promise<void> {
   }
 }
 
-// The docs-explorer import above constructs the OpenAI provider eagerly, so both keys
-// are required even though this demo never calls the language model itself.
-if (process.env.TYPESAFE_AI_API_KEY && process.env.OPENAI_API_KEY) {
+// The docs-explorer import above constructs the OpenAI provider eagerly, so OPENAI_API_KEY is
+// required even though this demo never calls the language model itself.
+const missing = [...evaluatorEnv(), "OPENAI_API_KEY"].filter((name) => !process.env[name]);
+if (missing.length === 0) {
   await runEffortEvaluatorDemo();
 } else {
-  console.log(
-    "Skipping effort-evaluator demo: TYPESAFE_AI_API_KEY and OPENAI_API_KEY must both be set.",
-  );
+  console.log(`Skipping effort-evaluator demo: ${missing.join(" and ")} must be set.`);
 }

@@ -1,4 +1,5 @@
 import { formatFastToolVerdict, formatLanguageVerdict } from "../lib/cli/index.ts";
+import { evaluatorEnv } from "../lib/env.ts";
 
 interface Sample {
   readonly prompt: string;
@@ -60,9 +61,10 @@ export async function runFastPathDemo(): Promise<void> {
   console.log(`\n${SAMPLES.length - mismatches}/${SAMPLES.length} samples as expected.`);
 }
 
-// Only TypeSafe is needed: this demo never imports the language model or docs-explorer.
-if (process.env.TYPESAFE_AI_API_KEY) {
+// Only the evaluator is needed: this demo never imports the language model or docs-explorer.
+const missing = evaluatorEnv().filter((name) => !process.env[name]);
+if (missing.length === 0) {
   await runFastPathDemo();
 } else {
-  console.log("Skipping fast-path demo: TYPESAFE_AI_API_KEY must be set.");
+  console.log(`Skipping fast-path demo: ${missing.join(", ")} must be set.`);
 }

@@ -11,6 +11,7 @@ import {
   formatInjectionVerdict,
   formatLanguageVerdict,
 } from "./lib/cli/index.ts";
+import { evaluatorEnv } from "./lib/env.ts";
 
 const USAGE = `Usage: pnpm dev [--json] <question>
        pnpm dev --help
@@ -95,7 +96,7 @@ function printJson(report: Report): void {
 
 async function main(): Promise<void> {
   const cli = parseCli(process.argv.slice(2));
-  checkRequiredEnv(["TYPESAFE_AI_API_KEY"]);
+  checkRequiredEnv(evaluatorEnv());
 
   const [
     { detectPromptInjection },

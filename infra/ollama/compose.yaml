@@ -1,0 +1,43 @@
+name: test-typesafe-ai
+
+# Ollama serving its library decision models (clef-flash, clef, nimble, tev1) on /v1/systemone.
+# Docker users only: wslc has no compose support, see bench/containers.ps1 for the wslc commands.
+# Pull a model once the server is up:
+#   docker compose -f infra/ollama/compose.yaml exec ollama ollama pull clef-flash:9b-q8_0
+services:
+  ollama:
+    image: ollama/ollama:0.35.1
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:11434:11434"
+    environment:
+      # Never unload the model between requests: reloading Clef-flash takes ~50 s.
+      OLLAMA_KEEP_ALIVE: "-1"
+    volumes:
+      - ollama-models:/root/.ollama
+    # The image runs as root and writes to /root/.ollama, so no read_only / user override here.
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+      start_interval: 2s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  ollama-models:

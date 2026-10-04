@@ -1,5 +1,6 @@
 import type { PromptInjectionState } from "../features/agents/classifiers/prompt-injection-detector/index.ts";
 import { formatInjectionVerdict } from "../lib/cli/index.ts";
+import { evaluatorEnv } from "../lib/env.ts";
 
 const INJECTION_SAMPLES: readonly PromptInjectionState[] = [
   {
@@ -43,8 +44,9 @@ export async function runPromptInjectionDemo(): Promise<void> {
   }
 }
 
-if (process.env.TYPESAFE_AI_API_KEY) {
+const missing = evaluatorEnv().filter((name) => !process.env[name]);
+if (missing.length === 0) {
   await runPromptInjectionDemo();
 } else {
-  console.log("Skipping prompt-injection-detector demo: TYPESAFE_AI_API_KEY is not set.");
+  console.log(`Skipping prompt-injection-detector demo: ${missing.join(", ")} is not set.`);
 }

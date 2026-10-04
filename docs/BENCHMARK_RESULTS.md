@@ -81,21 +81,24 @@ scale to zero.
 request of the run (one full `/v1/systemone` call, 1–7 questions; see Method). _Accuracy_ is the
 unweighted mean over the seven scored tasks.
 
-| Run              | Device | p50 ms | p95 ms |    Slow? | Cold start | Peak VRAM | Peak RAM | Acc. EN | Acc. FR | Errors |
-| ---------------- | -----: | -----: | -----: | -------: | ---------: | --------: | -------: | ------: | ------: | -----: |
-| `jev-hosted`     | hosted |    221 |    345 |       ok |          – |         – |        – |    87.4 |    85.9 |      0 |
-| `clef-flash-gpu` |    gpu |    148 |    322 |       ok |     57.2 s |   8.1 GiB |  9.4 GiB |    88.2 |    84.8 |      0 |
-| `kev-0.8b-cpu`   |    cpu |    672 |   2329 | **slow** |     20.7 s |         – |  4.2 GiB |    74.9 |    59.2 |      0 |
-| `kev-0.8b-gpu`   |    gpu |     13 |     30 |       ok |     90.5 s |   5.5 GiB |  2.7 GiB |    75.3 |    59.3 |      0 |
-| `kev-4b-cpu`     |    cpu |   3896 | 11.8 s | **slow** |     33.4 s |         – | 17.9 GiB |    86.8 |    79.3 |      0 |
-| `kev-4b-gpu`     |    gpu |    267 |   6767 | **slow** |    150.8 s |  11.1 GiB |  8.4 GiB |    86.5 |    79.4 |      0 |
-| `kev-9b-gpu`     |    gpu |   1061 |   3882 | **slow** |    353.9 s |  11.3 GiB | 10.8 GiB |    86.8 |    84.5 |      0 |
-| `nimble-cpu`     |    cpu |   5608 | 19.2 s | **slow** |     32.1 s |         – | 14.4 GiB |    89.2 |    87.0 |      0 |
-| `nimble-gpu`     |    gpu |    346 |   1024 |       ok |     76.2 s |   5.6 GiB |  9.3 GiB |    88.9 |    87.0 |      0 |
-| `laya-cpu`       |    cpu |    265 |   1102 |       ok |     25.9 s |         – |  7.0 GiB |    64.2 |    59.1 |      0 |
-| `laya-gpu`       |    gpu |     47 |     87 |       ok |     25.7 s |   5.6 GiB |  5.9 GiB |    63.7 |    59.4 |      0 |
-| `laya-typed-cpu` |    cpu |    310 |   1667 |       ok |     18.2 s |         – |  5.7 GiB |    63.0 |    54.5 |      0 |
-| `laya-typed-gpu` |    gpu |     49 |     81 |       ok |     23.7 s |   5.6 GiB |  3.0 GiB |    63.1 |    54.6 |      0 |
+| Run                     | Device | p50 ms | p95 ms |    Slow? | Cold start | Peak VRAM | Peak RAM | Acc. EN | Acc. FR | Errors |
+| ----------------------- | -----: | -----: | -----: | -------: | ---------: | --------: | -------: | ------: | ------: | -----: |
+| `jev-hosted`            | hosted |    221 |    345 |       ok |          – |         – |        – |    87.4 |    85.9 |      0 |
+| `clef-flash-gpu`        |    gpu |    148 |    322 |       ok |     57.2 s |   8.1 GiB |  9.4 GiB |    88.2 |    84.8 |      0 |
+| `clef-flash-ollama-gpu` |    gpu |    196 |    529 |       ok |     47.1 s |  11.0 GiB |  2.8 GiB |    87.4 |    84.8 |      0 |
+| `kev-0.8b-cpu`          |    cpu |    672 |   2329 | **slow** |     20.7 s |         – |  4.2 GiB |    74.9 |    59.2 |      0 |
+| `kev-0.8b-gpu`          |    gpu |     13 |     30 |       ok |     90.5 s |   5.5 GiB |  2.7 GiB |    75.3 |    59.3 |      0 |
+| `kev-4b-cpu`            |    cpu |   3896 | 11.8 s | **slow** |     33.4 s |         – | 17.9 GiB |    86.8 |    79.3 |      0 |
+| `kev-4b-gpu`            |    gpu |    267 |   6767 | **slow** |    150.8 s |  11.1 GiB |  8.4 GiB |    86.5 |    79.4 |      0 |
+| `kev-9b-gpu`            |    gpu |   1061 |   3882 | **slow** |    353.9 s |  11.3 GiB | 10.8 GiB |    86.8 |    84.5 |      0 |
+| `nimble-cpu`            |    cpu |   5608 | 19.2 s | **slow** |     32.1 s |         – | 14.4 GiB |    89.2 |    87.0 |      0 |
+| `nimble-gpu`            |    gpu |    346 |   1024 |       ok |     76.2 s |   5.6 GiB |  9.3 GiB |    88.9 |    87.0 |      0 |
+| `tev1-0.8b-gpu`         |    gpu |     55 |    362 |       ok |     49.6 s |   1.0 GiB |  9.6 GiB |    70.5 |    62.2 |      0 |
+| `tev1-4b-gpu`           |    gpu |    185 |   1064 |       ok |     61.2 s |   4.5 GiB | 10.7 GiB |    86.5 |    84.0 |      0 |
+| `laya-cpu`              |    cpu |    265 |   1102 |       ok |     25.9 s |         – |  7.0 GiB |    64.2 |    59.1 |      0 |
+| `laya-gpu`              |    gpu |     47 |     87 |       ok |     25.7 s |   5.6 GiB |  5.9 GiB |    63.7 |    59.4 |      0 |
+| `laya-typed-cpu`        |    cpu |    310 |   1667 |       ok |     18.2 s |         – |  5.7 GiB |    63.0 |    54.5 |      0 |
+| `laya-typed-gpu`        |    gpu |     49 |     81 |       ok |     23.7 s |   5.6 GiB |  3.0 GiB |    63.1 |    54.6 |      0 |
 
 ### Runs that failed or were stopped
 
@@ -112,42 +115,48 @@ Accuracy (%) per language. Parallel corpora (MASSIVE, XNLI, PAWS-X) and all app 
 items in both languages, so _EN−FR_ is a like-for-like gap. Language detection's _other_ column is
 15 non-EN/FR or contentless inputs.
 
-| Run              | language EN |    FR | other | fast-path EN |    FR | injection EN |    FR | massive EN |   FR | xnli EN |   FR | pawsx EN |   FR | sentiment EN |   FR | Mean EN−FR |
-| ---------------- | ----------: | ----: | ----: | -----------: | ----: | -----------: | ----: | ---------: | ---: | ------: | ---: | -------: | ---: | -----------: | ---: | ---------: |
-| `jev-hosted`     |       100.0 |  97.9 |  93.3 |         95.8 |  91.7 |         82.5 |  85.0 |       98.5 | 96.5 |    84.0 | 80.0 |     84.5 | 84.5 |         66.5 | 65.5 |    1.5 pts |
-| `clef-flash-gpu` |       100.0 |  97.9 | 100.0 |        100.0 | 100.0 |         97.5 |  97.5 |       99.0 | 98.0 |    83.5 | 77.0 |     78.0 | 77.0 |         59.5 | 46.0 |    3.4 pts |
-| `kev-0.8b-cpu`   |        62.5 |   0.0 |  60.0 |         77.1 |  68.8 |         80.0 |  75.0 |       94.5 | 93.0 |    81.0 | 70.0 |     67.5 | 57.0 |         61.5 | 50.5 |   15.7 pts |
-| `kev-0.8b-gpu`   |        64.6 |   0.0 |  66.7 |         77.1 |  68.8 |         80.0 |  75.0 |       95.0 | 93.0 |    81.0 | 71.0 |     68.0 | 57.0 |         61.5 | 50.0 |   16.1 pts |
-| `kev-4b-cpu`     |       100.0 |  93.8 |  86.7 |         83.3 |  72.9 |         90.0 |  87.5 |       97.0 | 95.0 |    87.0 | 79.0 |     82.5 | 80.0 |         67.5 | 47.0 |    7.5 pts |
-| `kev-4b-gpu`     |       100.0 |  93.8 |  86.7 |         81.3 |  72.9 |         90.0 |  87.5 |       97.0 | 95.5 |    87.5 | 79.0 |     81.5 | 80.0 |         68.0 | 47.0 |    7.1 pts |
-| `kev-9b-gpu`     |        91.7 |  97.9 |  86.7 |         97.9 |  97.9 |         80.0 |  87.5 |       97.0 | 95.5 |    87.5 | 83.0 |     78.0 | 77.5 |         75.5 | 52.0 |    2.3 pts |
-| `nimble-cpu`     |       100.0 | 100.0 |  86.7 |        100.0 | 100.0 |         97.5 |  97.5 |       97.5 | 95.0 |    87.0 | 81.5 |     75.0 | 76.0 |         67.5 | 59.0 |    2.2 pts |
-| `nimble-gpu`     |        97.9 | 100.0 |  93.3 |        100.0 | 100.0 |         97.5 | 100.0 |       98.5 | 94.5 |    87.5 | 80.5 |     73.0 | 75.0 |         68.0 | 59.0 |    1.9 pts |
-| `laya-cpu`       |         0.0 |  39.6 |  93.3 |         77.1 |  54.2 |         72.5 |  57.5 |       72.0 | 70.0 |    84.0 | 75.0 |     88.5 | 66.0 |         55.0 | 51.5 |    5.0 pts |
-| `laya-gpu`       |         0.0 |  39.6 |  93.3 |         77.1 |  54.2 |         70.0 |  57.5 |       72.0 | 70.5 |    84.0 | 75.5 |     88.5 | 67.0 |         54.0 | 51.5 |    4.3 pts |
-| `laya-typed-cpu` |         0.0 |   0.0 | 100.0 |         43.8 |  43.8 |         80.0 |  77.5 |       81.0 | 62.0 |    84.0 | 71.5 |     85.0 | 75.5 |         67.0 | 51.0 |    8.5 pts |
-| `laya-typed-gpu` |         0.0 |   0.0 | 100.0 |         43.8 |  43.8 |         80.0 |  77.5 |       81.0 | 62.0 |    84.0 | 72.0 |     86.0 | 76.5 |         67.0 | 50.5 |    8.5 pts |
+| Run                     | language EN |    FR | other | fast-path EN |    FR | injection EN |    FR | massive EN |   FR | xnli EN |   FR | pawsx EN |   FR | sentiment EN |   FR | Mean EN−FR |
+| ----------------------- | ----------: | ----: | ----: | -----------: | ----: | -----------: | ----: | ---------: | ---: | ------: | ---: | -------: | ---: | -----------: | ---: | ---------: |
+| `jev-hosted`            |       100.0 |  97.9 |  93.3 |         95.8 |  91.7 |         82.5 |  85.0 |       98.5 | 96.5 |    84.0 | 80.0 |     84.5 | 84.5 |         66.5 | 65.5 |    1.5 pts |
+| `clef-flash-gpu`        |       100.0 |  97.9 | 100.0 |        100.0 | 100.0 |         97.5 |  97.5 |       99.0 | 98.0 |    83.5 | 77.0 |     78.0 | 77.0 |         59.5 | 46.0 |    3.4 pts |
+| `clef-flash-ollama-gpu` |        95.8 |  97.9 | 100.0 |        100.0 | 100.0 |         95.0 |  97.5 |       99.0 | 98.0 |    82.0 | 77.0 |     78.0 | 77.0 |         62.0 | 46.5 |    2.6 pts |
+| `kev-0.8b-cpu`          |        62.5 |   0.0 |  60.0 |         77.1 |  68.8 |         80.0 |  75.0 |       94.5 | 93.0 |    81.0 | 70.0 |     67.5 | 57.0 |         61.5 | 50.5 |   15.7 pts |
+| `kev-0.8b-gpu`          |        64.6 |   0.0 |  66.7 |         77.1 |  68.8 |         80.0 |  75.0 |       95.0 | 93.0 |    81.0 | 71.0 |     68.0 | 57.0 |         61.5 | 50.0 |   16.1 pts |
+| `kev-4b-cpu`            |       100.0 |  93.8 |  86.7 |         83.3 |  72.9 |         90.0 |  87.5 |       97.0 | 95.0 |    87.0 | 79.0 |     82.5 | 80.0 |         67.5 | 47.0 |    7.5 pts |
+| `kev-4b-gpu`            |       100.0 |  93.8 |  86.7 |         81.3 |  72.9 |         90.0 |  87.5 |       97.0 | 95.5 |    87.5 | 79.0 |     81.5 | 80.0 |         68.0 | 47.0 |    7.1 pts |
+| `kev-9b-gpu`            |        91.7 |  97.9 |  86.7 |         97.9 |  97.9 |         80.0 |  87.5 |       97.0 | 95.5 |    87.5 | 83.0 |     78.0 | 77.5 |         75.5 | 52.0 |    2.3 pts |
+| `nimble-cpu`            |       100.0 | 100.0 |  86.7 |        100.0 | 100.0 |         97.5 |  97.5 |       97.5 | 95.0 |    87.0 | 81.5 |     75.0 | 76.0 |         67.5 | 59.0 |    2.2 pts |
+| `nimble-gpu`            |        97.9 | 100.0 |  93.3 |        100.0 | 100.0 |         97.5 | 100.0 |       98.5 | 94.5 |    87.5 | 80.5 |     73.0 | 75.0 |         68.0 | 59.0 |    1.9 pts |
+| `tev1-0.8b-gpu`         |        54.2 |  16.7 |  66.7 |         62.5 |  62.5 |         75.0 |  80.0 |       94.5 | 88.0 |    82.0 | 75.5 |     55.5 | 50.5 |         69.5 | 62.0 |    8.3 pts |
+| `tev1-4b-gpu`           |        91.7 |  97.9 |  93.3 |        100.0 |  95.8 |         77.5 |  85.0 |       98.5 | 97.5 |    91.0 | 80.5 |     81.5 | 81.0 |         65.0 | 50.0 |    2.5 pts |
+| `laya-cpu`              |         0.0 |  39.6 |  93.3 |         77.1 |  54.2 |         72.5 |  57.5 |       72.0 | 70.0 |    84.0 | 75.0 |     88.5 | 66.0 |         55.0 | 51.5 |    5.0 pts |
+| `laya-gpu`              |         0.0 |  39.6 |  93.3 |         77.1 |  54.2 |         70.0 |  57.5 |       72.0 | 70.5 |    84.0 | 75.5 |     88.5 | 67.0 |         54.0 | 51.5 |    4.3 pts |
+| `laya-typed-cpu`        |         0.0 |   0.0 | 100.0 |         43.8 |  43.8 |         80.0 |  77.5 |       81.0 | 62.0 |    84.0 | 71.5 |     85.0 | 75.5 |         67.0 | 51.0 |    8.5 pts |
+| `laya-typed-gpu`        |         0.0 |   0.0 | 100.0 |         43.8 |  43.8 |         80.0 |  77.5 |       81.0 | 62.0 |    84.0 | 72.0 |     86.0 | 76.5 |         67.0 | 50.5 |    8.5 pts |
 
 ### Macro-F1, calibration and secondary fields
 
 Macro-F1 (%) and Brier (lower is better) pooled over EN+FR; ECE is the top-label expected
 calibration error. Fast-path _place_ / _day_ are scored only where code would answer with them.
 
-| Run              | MASSIVE F1 | XNLI F1 | PAWS-X F1 | Sentiment F1 | Sentiment MAE | Injection F1 | Brier (choice/bool) |   ECE | Fast-path place | Fast-path day | Effort EN=FR |
-| ---------------- | ---------: | ------: | --------: | -----------: | ------------: | -----------: | ------------------: | ----: | --------------: | ------------: | -----------: |
-| `jev-hosted`     |       97.5 |    82.3 |      84.4 |         64.7 |         0.398 |         83.3 |               0.178 | 0.058 |           100.0 |         100.0 |         93.3 |
-| `clef-flash-gpu` |       98.5 |    80.7 |      77.2 |         49.1 |         0.486 |         97.5 |               0.173 | 0.047 |           100.0 |          86.4 |         73.3 |
-| `kev-0.8b-cpu`   |       93.9 |    75.7 |      58.5 |         55.7 |         0.518 |         77.4 |               0.327 | 0.105 |            62.5 |          95.5 |         86.7 |
-| `kev-0.8b-gpu`   |       94.2 |    76.2 |      58.9 |         55.4 |         0.517 |         77.4 |               0.326 | 0.109 |            62.5 |          95.5 |         93.3 |
-| `kev-4b-cpu`     |       96.0 |    83.2 |      81.1 |         56.5 |         0.465 |         88.6 |               0.195 | 0.091 |           100.0 |          81.8 |         86.7 |
-| `kev-4b-gpu`     |       96.3 |    83.5 |      80.5 |         56.8 |         0.465 |         88.6 |               0.196 | 0.091 |           100.0 |          81.8 |         86.7 |
-| `kev-9b-gpu`     |       96.2 |    85.5 |      77.4 |         63.7 |         0.453 |         83.2 |               0.218 | 0.088 |           100.0 |          86.4 |         93.3 |
-| `nimble-cpu`     |       96.3 |    84.2 |      74.6 |         62.0 |         0.416 |         97.5 |               0.184 | 0.079 |           100.0 |          86.4 |        100.0 |
-| `nimble-gpu`     |       96.5 |    83.9 |      73.1 |         62.3 |         0.420 |         98.7 |               0.190 | 0.084 |           100.0 |          90.9 |        100.0 |
-| `laya-cpu`       |       73.7 |    79.6 |      76.5 |         52.9 |         0.544 |         59.6 |               0.394 | 0.172 |            18.8 |          77.3 |         13.3 |
-| `laya-gpu`       |       73.9 |    79.9 |      77.1 |         52.5 |         0.544 |         58.4 |               0.393 | 0.173 |            15.6 |          77.3 |         13.3 |
-| `laya-typed-cpu` |       74.8 |    78.0 |      80.2 |         58.9 |         0.537 |         77.7 |               0.322 | 0.154 |             9.4 |          68.2 |        100.0 |
-| `laya-typed-gpu` |       74.8 |    78.2 |      81.2 |         58.7 |         0.537 |         77.7 |               0.322 | 0.155 |             9.4 |          63.6 |        100.0 |
+| Run                     | MASSIVE F1 | XNLI F1 | PAWS-X F1 | Sentiment F1 | Sentiment MAE | Injection F1 | Brier (choice/bool) |   ECE | Fast-path place | Fast-path day | Effort EN=FR |
+| ----------------------- | ---------: | ------: | --------: | -----------: | ------------: | -----------: | ------------------: | ----: | --------------: | ------------: | -----------: |
+| `jev-hosted`            |       97.5 |    82.3 |      84.4 |         64.7 |         0.398 |         83.3 |               0.178 | 0.058 |           100.0 |         100.0 |         93.3 |
+| `clef-flash-gpu`        |       98.5 |    80.7 |      77.2 |         49.1 |         0.486 |         97.5 |               0.173 | 0.047 |           100.0 |          86.4 |         73.3 |
+| `clef-flash-ollama-gpu` |       98.5 |    79.9 |      77.3 |         50.9 |         0.479 |         96.2 |               0.167 | 0.050 |           100.0 |          86.4 |         86.7 |
+| `kev-0.8b-cpu`          |       93.9 |    75.7 |      58.5 |         55.7 |         0.518 |         77.4 |               0.327 | 0.105 |            62.5 |          95.5 |         86.7 |
+| `kev-0.8b-gpu`          |       94.2 |    76.2 |      58.9 |         55.4 |         0.517 |         77.4 |               0.326 | 0.109 |            62.5 |          95.5 |         93.3 |
+| `kev-4b-cpu`            |       96.0 |    83.2 |      81.1 |         56.5 |         0.465 |         88.6 |               0.195 | 0.091 |           100.0 |          81.8 |         86.7 |
+| `kev-4b-gpu`            |       96.3 |    83.5 |      80.5 |         56.8 |         0.465 |         88.6 |               0.196 | 0.091 |           100.0 |          81.8 |         86.7 |
+| `kev-9b-gpu`            |       96.2 |    85.5 |      77.4 |         63.7 |         0.453 |         83.2 |               0.218 | 0.088 |           100.0 |          86.4 |         93.3 |
+| `nimble-cpu`            |       96.3 |    84.2 |      74.6 |         62.0 |         0.416 |         97.5 |               0.184 | 0.079 |           100.0 |          86.4 |        100.0 |
+| `nimble-gpu`            |       96.5 |    83.9 |      73.1 |         62.3 |         0.420 |         98.7 |               0.190 | 0.084 |           100.0 |          90.9 |        100.0 |
+| `tev1-0.8b-gpu`         |       92.2 |    78.7 |      40.3 |         65.4 |         0.462 |         77.5 |               0.377 | 0.153 |            96.9 |          81.8 |         66.7 |
+| `tev1-4b-gpu`           |       98.0 |    85.8 |      81.0 |         57.1 |         0.468 |         80.5 |               0.170 | 0.053 |           100.0 |          90.9 |         73.3 |
+| `laya-cpu`              |       73.7 |    79.6 |      76.5 |         52.9 |         0.544 |         59.6 |               0.394 | 0.172 |            18.8 |          77.3 |         13.3 |
+| `laya-gpu`              |       73.9 |    79.9 |      77.1 |         52.5 |         0.544 |         58.4 |               0.393 | 0.173 |            15.6 |          77.3 |         13.3 |
+| `laya-typed-cpu`        |       74.8 |    78.0 |      80.2 |         58.9 |         0.537 |         77.7 |               0.322 | 0.154 |             9.4 |          68.2 |        100.0 |
+| `laya-typed-gpu`        |       74.8 |    78.2 |      81.2 |         58.7 |         0.537 |         77.7 |               0.322 | 0.155 |             9.4 |          63.6 |        100.0 |
 
 ## Latency and throughput
 
@@ -156,21 +165,24 @@ _Prefill tok/s_ uses the server's own `usage.input_tokens`, which servers count 
 (Nimble counts its prompt once per question, Laya once per question row), so compare it within
 a model across devices rather than across models. A value under 500 tok/s is flagged.
 
-| Run              | language (1q) | massive (1q) | xnli (1q) | pawsx (1q) | sentiment (1q) | fast-path (4q) | injection (5q) | effort (7q) | p99 ms | Decisions/s | Prefill tok/s |
-| ---------------- | ------------: | -----------: | --------: | ---------: | -------------: | -------------: | -------------: | ----------: | -----: | ----------: | ------------: |
-| `jev-hosted`     |           238 |          218 |       220 |        220 |            215 |            235 |            252 |         242 |    559 |         5.9 |          1996 |
-| `clef-flash-gpu` |           141 |          175 |       141 |        143 |            141 |            289 |            324 |         428 |    425 |         8.2 |          1869 |
-| `kev-0.8b-cpu`   |           653 |          831 |       665 |        662 |            580 |           2032 |           2366 |        3027 |   2949 |         1.6 |         194 ⚠ |
-| `kev-0.8b-gpu`   |            13 |           15 |        13 |         13 |             12 |             24 |             29 |          35 |    135 |        77.4 |          9136 |
-| `kev-4b-cpu`     |          3631 |         4847 |      3801 |       3820 |           3310 |           9809 |         12.0 s |      15.0 s | 14.9 s |         0.3 |          35 ⚠ |
-| `kev-4b-gpu`     |           227 |          415 |       267 |        266 |            263 |           6767 |           5582 |      10.1 s | 10.0 s |         1.5 |         172 ⚠ |
-| `kev-9b-gpu`     |           889 |         1770 |      1061 |       1060 |           1059 |           2629 |           3883 |        4420 |   4479 |         0.9 |         112 ⚠ |
-| `nimble-cpu`     |          5524 |         7859 |      5462 |       5606 |           5012 |         17.1 s |         19.4 s |      26.4 s | 26.4 s |         0.2 |          87 ⚠ |
-| `nimble-gpu`     |           283 |          370 |       327 |        340 |            330 |            895 |           1077 |        1614 |   1608 |         3.3 |          1512 |
-| `laya-cpu`       |           265 |          393 |       252 |        129 |            245 |           1063 |           1573 |        1686 |   1886 |         4.5 |           628 |
-| `laya-gpu`       |            55 |           49 |        45 |         40 |             39 |             59 |             57 |          63 |    105 |        28.0 |          3942 |
-| `laya-typed-cpu` |           282 |          418 |       299 |        312 |            272 |           1088 |           1819 |        2548 |   2458 |         3.1 |         447 ⚠ |
-| `laya-typed-gpu` |            47 |           49 |        47 |         48 |             49 |             50 |             46 |          59 |     98 |        27.2 |          3983 |
+| Run                     | language (1q) | massive (1q) | xnli (1q) | pawsx (1q) | sentiment (1q) | fast-path (4q) | injection (5q) | effort (7q) | p99 ms | Decisions/s | Prefill tok/s |
+| ----------------------- | ------------: | -----------: | --------: | ---------: | -------------: | -------------: | -------------: | ----------: | -----: | ----------: | ------------: |
+| `jev-hosted`            |           238 |          218 |       220 |        220 |            215 |            235 |            252 |         242 |    559 |         5.9 |          1996 |
+| `clef-flash-gpu`        |           141 |          175 |       141 |        143 |            141 |            289 |            324 |         428 |    425 |         8.2 |          1869 |
+| `clef-flash-ollama-gpu` |           206 |          284 |       195 |        193 |            186 |            506 |            535 |         732 |    727 |         5.6 |          1279 |
+| `kev-0.8b-cpu`          |           653 |          831 |       665 |        662 |            580 |           2032 |           2366 |        3027 |   2949 |         1.6 |         194 ⚠ |
+| `kev-0.8b-gpu`          |            13 |           15 |        13 |         13 |             12 |             24 |             29 |          35 |    135 |        77.4 |          9136 |
+| `kev-4b-cpu`            |          3631 |         4847 |      3801 |       3820 |           3310 |           9809 |         12.0 s |      15.0 s | 14.9 s |         0.3 |          35 ⚠ |
+| `kev-4b-gpu`            |           227 |          415 |       267 |        266 |            263 |           6767 |           5582 |      10.1 s | 10.0 s |         1.5 |         172 ⚠ |
+| `kev-9b-gpu`            |           889 |         1770 |      1061 |       1060 |           1059 |           2629 |           3883 |        4420 |   4479 |         0.9 |         112 ⚠ |
+| `nimble-cpu`            |          5524 |         7859 |      5462 |       5606 |           5012 |         17.1 s |         19.4 s |      26.4 s | 26.4 s |         0.2 |          87 ⚠ |
+| `nimble-gpu`            |           283 |          370 |       327 |        340 |            330 |            895 |           1077 |        1614 |   1608 |         3.3 |          1512 |
+| `tev1-0.8b-gpu`         |           161 |           62 |        47 |         49 |             49 |            357 |            333 |         463 |    501 |        14.8 |          6225 |
+| `tev1-4b-gpu`           |           323 |          190 |       167 |        172 |            169 |            857 |           1136 |        1370 |   1434 |         4.6 |          1937 |
+| `laya-cpu`              |           265 |          393 |       252 |        129 |            245 |           1063 |           1573 |        1686 |   1886 |         4.5 |           628 |
+| `laya-gpu`              |            55 |           49 |        45 |         40 |             39 |             59 |             57 |          63 |    105 |        28.0 |          3942 |
+| `laya-typed-cpu`        |           282 |          418 |       299 |        312 |            272 |           1088 |           1819 |        2548 |   2458 |         3.1 |         447 ⚠ |
+| `laya-typed-gpu`        |            47 |           49 |        47 |         48 |             49 |             50 |             46 |          59 |     98 |        27.2 |          3983 |
 
 ### Latency vs number of questions
 
@@ -178,39 +190,45 @@ Same states (the 15 EN effort prompts, round-robin), asking the first 1, 2, 4 or
 effort-evaluator questions; p50 ms over 20 requests each. Prompts rotate so servers that cache a
 repeated prompt prefix can't answer from cache.
 
-| Run              | 1 question |      2 |      4 |      7 | 7 ÷ 1 |
-| ---------------- | ---------: | -----: | -----: | -----: | ----: |
-| `jev-hosted`     |        223 |    216 |    213 |    239 |  1.1× |
-| `clef-flash-gpu` |        169 |    212 |    328 |    417 |  2.5× |
-| `kev-0.8b-cpu`   |        804 |   1091 |   1779 |   3087 |  3.8× |
-| `kev-0.8b-gpu`   |         14 |     17 |     25 |     35 |  2.4× |
-| `kev-4b-cpu`     |       4672 |   6113 |   9480 | 14.8 s |  3.2× |
-| `kev-4b-gpu`     |        271 |   3779 |   1596 | 10.1 s | 37.1× |
-| `kev-9b-gpu`     |       1064 |   1575 |   2626 |   4417 |  4.2× |
-| `nimble-cpu`     |       7044 | 11.2 s | 18.1 s | 26.1 s |  3.7× |
-| `nimble-gpu`     |        362 |    713 |   1112 |   1617 |  4.5× |
-| `laya-cpu`       |        428 |    764 |   1476 |   2466 |  5.8× |
-| `laya-gpu`       |         44 |     64 |     59 |     63 |  1.4× |
-| `laya-typed-cpu` |        424 |    758 |   1468 |   2485 |  5.9× |
-| `laya-typed-gpu` |         51 |     49 |     68 |     69 |  1.4× |
+| Run                     | 1 question |      2 |      4 |      7 | 7 ÷ 1 |
+| ----------------------- | ---------: | -----: | -----: | -----: | ----: |
+| `jev-hosted`            |        223 |    216 |    213 |    239 |  1.1× |
+| `clef-flash-gpu`        |        169 |    212 |    328 |    417 |  2.5× |
+| `clef-flash-ollama-gpu` |        234 |    330 |    528 |    737 |  3.2× |
+| `kev-0.8b-cpu`          |        804 |   1091 |   1779 |   3087 |  3.8× |
+| `kev-0.8b-gpu`          |         14 |     17 |     25 |     35 |  2.4× |
+| `kev-4b-cpu`            |       4672 |   6113 |   9480 | 14.8 s |  3.2× |
+| `kev-4b-gpu`            |        271 |   3779 |   1596 | 10.1 s | 37.1× |
+| `kev-9b-gpu`            |       1064 |   1575 |   2626 |   4417 |  4.2× |
+| `nimble-cpu`            |       7044 | 11.2 s | 18.1 s | 26.1 s |  3.7× |
+| `nimble-gpu`            |        362 |    713 |   1112 |   1617 |  4.5× |
+| `tev1-0.8b-gpu`         |         72 |    155 |    278 |    463 |  6.5× |
+| `tev1-4b-gpu`           |        180 |    505 |    899 |   1426 |  7.9× |
+| `laya-cpu`              |        428 |    764 |   1476 |   2466 |  5.8× |
+| `laya-gpu`              |         44 |     64 |     59 |     63 |  1.4× |
+| `laya-typed-cpu`        |        424 |    758 |   1468 |   2485 |  5.9× |
+| `laya-typed-gpu`        |         51 |     49 |     68 |     69 |  1.4× |
 
 ## Run configuration
 
-| Run              |                                 Model id | Items | Wall time |                                                                                             Server configuration |
-| ---------------- | ---------------------------------------: | ----: | --------: | ---------------------------------------------------------------------------------------------------------------: |
-| `jev-hosted`     |                             `jev-latest` |  1917 |   8.0 min |                                                                                                       hosted API |
-| `clef-flash-gpu` |                             `clef-flash` |  1917 |   5.9 min | `test-typesafe-ai/clef:cu128 CLEF_DEVICE=cuda CLEF_MODEL=meossistant/clef-flash-4bit CLEF_MODEL_NAME=clef-flash` |
-| `kev-0.8b-cpu`   |                             `kev-latest` |  1917 |  29.7 min |                     `test-typesafe-ai/kev:cpu KEV_PREFIX_CACHE=0 KEV_RUN=jaredpalmer/kev-0.8b OMP_NUM_THREADS=8` |
-| `kev-0.8b-gpu`   |                             `kev-latest` |  1917 |   0.7 min |                                     `test-typesafe-ai/kev:cu128 KEV_PREFIX_CACHE=0 KEV_RUN=jaredpalmer/kev-0.8b` |
-| `kev-4b-cpu`     |                             `kev-latest` |  1917 | 164.6 min |                       `test-typesafe-ai/kev:cpu KEV_PREFIX_CACHE=0 KEV_RUN=jaredpalmer/kev-4b OMP_NUM_THREADS=8` |
-| `kev-4b-gpu`     |                             `kev-latest` |  1917 |  36.1 min |                                       `test-typesafe-ai/kev:cu128 KEV_PREFIX_CACHE=0 KEV_RUN=jaredpalmer/kev-4b` |
-| `kev-9b-gpu`     |                             `kev-latest` |  1917 |  51.3 min |                                       `test-typesafe-ai/kev:cu128 KEV_PREFIX_CACHE=0 KEV_RUN=jaredpalmer/kev-9b` |
-| `nimble-cpu`     |                       `nimble:9b-q4_K_M` |  1917 | 254.3 min |                                                  `ollama/ollama:latest OLLAMA_KEEP_ALIVE=-1 OLLAMA_NUM_THREAD=8` |
-| `nimble-gpu`     |                       `nimble:9b-q4_K_M` |  1917 |  17.0 min |                                                                      `ollama/ollama:latest OLLAMA_KEEP_ALIVE=-1` |
-| `laya-cpu`       |                 `convaiinnovations/laya` |  1917 |  11.9 min |                                                                `test-typesafe-ai/laya:0.3.21-cpu LAYA_THREADS=8` |
-| `laya-gpu`       |                 `convaiinnovations/laya` |  1917 |   1.7 min |                                                            `test-typesafe-ai/laya:0.3.21-cu128 LAYA_DEVICE=cuda` |
-| `laya-typed-cpu` | `convaiinnovations/laya-typed-decisions` |  1917 |  16.5 min |                                                                `test-typesafe-ai/laya:0.3.21-cpu LAYA_THREADS=8` |
-| `laya-typed-gpu` | `convaiinnovations/laya-typed-decisions` |  1917 |   1.8 min |                                                            `test-typesafe-ai/laya:0.3.21-cu128 LAYA_DEVICE=cuda` |
+| Run                     |                                 Model id | Items | Wall time |                                                                                             Server configuration |
+| ----------------------- | ---------------------------------------: | ----: | --------: | ---------------------------------------------------------------------------------------------------------------: |
+| `jev-hosted`            |                             `jev-latest` |  1917 |   8.0 min |                                                                                                       hosted API |
+| `clef-flash-gpu`        |                             `clef-flash` |  1917 |   5.9 min | `test-typesafe-ai/clef:cu128 CLEF_DEVICE=cuda CLEF_MODEL=meossistant/clef-flash-4bit CLEF_MODEL_NAME=clef-flash` |
+| `clef-flash-ollama-gpu` |                     `clef-flash:9b-q8_0` |  1917 |   8.7 min |                                                                      `ollama/ollama:0.35.1 OLLAMA_KEEP_ALIVE=-1` |
+| `kev-0.8b-cpu`          |                             `kev-latest` |  1917 |  29.7 min |                     `test-typesafe-ai/kev:cpu KEV_PREFIX_CACHE=0 KEV_RUN=jaredpalmer/kev-0.8b OMP_NUM_THREADS=8` |
+| `kev-0.8b-gpu`          |                             `kev-latest` |  1917 |   0.7 min |                                     `test-typesafe-ai/kev:cu128 KEV_PREFIX_CACHE=0 KEV_RUN=jaredpalmer/kev-0.8b` |
+| `kev-4b-cpu`            |                             `kev-latest` |  1917 | 164.6 min |                       `test-typesafe-ai/kev:cpu KEV_PREFIX_CACHE=0 KEV_RUN=jaredpalmer/kev-4b OMP_NUM_THREADS=8` |
+| `kev-4b-gpu`            |                             `kev-latest` |  1917 |  36.1 min |                                       `test-typesafe-ai/kev:cu128 KEV_PREFIX_CACHE=0 KEV_RUN=jaredpalmer/kev-4b` |
+| `kev-9b-gpu`            |                             `kev-latest` |  1917 |  51.3 min |                                       `test-typesafe-ai/kev:cu128 KEV_PREFIX_CACHE=0 KEV_RUN=jaredpalmer/kev-9b` |
+| `nimble-cpu`            |                       `nimble:9b-q4_K_M` |  1917 | 254.3 min |                                                  `ollama/ollama:latest OLLAMA_KEEP_ALIVE=-1 OLLAMA_NUM_THREAD=8` |
+| `nimble-gpu`            |                       `nimble:9b-q4_K_M` |  1917 |  17.0 min |                                                                      `ollama/ollama:latest OLLAMA_KEEP_ALIVE=-1` |
+| `tev1-0.8b-gpu`         |                         `tev1:0.8b-q8_0` |  1917 |   3.4 min |                                                                      `ollama/ollama:0.35.1 OLLAMA_KEEP_ALIVE=-1` |
+| `tev1-4b-gpu`           |                           `tev1:4b-q8_0` |  1917 |  17.1 min |                                                                      `ollama/ollama:0.35.1 OLLAMA_KEEP_ALIVE=-1` |
+| `laya-cpu`              |                 `convaiinnovations/laya` |  1917 |  11.9 min |                                                                `test-typesafe-ai/laya:0.3.21-cpu LAYA_THREADS=8` |
+| `laya-gpu`              |                 `convaiinnovations/laya` |  1917 |   1.7 min |                                                            `test-typesafe-ai/laya:0.3.21-cu128 LAYA_DEVICE=cuda` |
+| `laya-typed-cpu`        | `convaiinnovations/laya-typed-decisions` |  1917 |  16.5 min |                                                                `test-typesafe-ai/laya:0.3.21-cpu LAYA_THREADS=8` |
+| `laya-typed-gpu`        | `convaiinnovations/laya-typed-decisions` |  1917 |   1.8 min |                                                            `test-typesafe-ai/laya:0.3.21-cu128 LAYA_DEVICE=cuda` |
 
 ## Method
 
@@ -279,9 +297,20 @@ single question written once for every model (public tasks).
 
 - **Clef-flash**: the GPU run uses `meossistant/clef-flash-4bit` (community NF4 quantization,
   ~6 GB), because the official BF16 weights (~18 GB) don't fit 12 GB of VRAM. The CPU run uses the
-  official `Cloudflare/clef-flash` in BF16. Both are served by `infra/clef/serve.py`, which calls
-  the checkpoint's own `joint_schema_model.py` encoding and answer code.
-- **Clef (27B)**: too large for either device alone (54 GB in BF16). The GPU run loads it in NF4
+  official `Cloudflare/clef-flash` in BF16. Both were served by a custom FastAPI server around the
+  checkpoint's own `joint_schema_model.py` (`infra/clef/serve.py`, removed once Ollama served
+  Clef; see commit 743bb2d).
+- **Clef-flash on Ollama** (`clef-flash-ollama-*`): `clef-flash:9b-q8_0` from the Ollama library
+  on Ollama 0.35.1 (native `/v1/systemone`), the same weights on both devices. Q8_0 (~11 GB) is
+  the smallest CUDA tag Ollama publishes. A 4-bit build wasn't possible: Ollama's Linux build
+  can't import safetensors (that path needs MLX, which only ships on macOS) or requantize a
+  GGUF, and the community 4-bit GGUFs that keep the decision head use llama.cpp's `clef`
+  architecture, which Ollama 0.35.1's bundled llama.cpp can't load. Weights are pulled ahead of
+  the run, so cold start excludes the download.
+- **Clef on Ollama** (`clef-ollama-*`): `clef:27b-q4_k_m` (~18 GB); on the GPU, Ollama keeps
+  what fits in 12 GB of VRAM and runs the remaining layers on the CPU.
+- **Tev1**: `tev1:0.8b-q8_0` and `tev1:4b-q8_0` on Ollama 0.35.1, the same weights on both devices.
+- **Clef (27B), custom server**: too large for either device alone (54 GB in BF16). The GPU run loads it in NF4
   (quantized while loading, about 15 GB) onto the GPU and lets the Windows driver spill what
   doesn't fit into system memory, as Kev 9B does. An explicit GPU/CPU layer split
   (`accelerate` offload) was tried first and can't work: `accelerate` can't stream 4-bit layers

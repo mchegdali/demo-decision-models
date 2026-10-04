@@ -3,8 +3,8 @@
  * and writes raw results to bench/results/<label>.json. bench/report.ts turns those into
  * docs/BENCHMARK_RESULTS.md.
  *
- *   node bench/run.ts --label clef-flash-gpu --base-url http://127.0.0.1:8010/v1 \
- *     --model-id clef-flash --device gpu --container clef [--limit 100] [--tasks massive,xnli]
+ *   node bench/run.ts --label clef-flash-ollama-gpu --base-url http://127.0.0.1:11434/v1 \
+ *     --model-id clef-flash:9b-q8_0 --device gpu --container ollama [--limit 100] [--tasks massive,xnli]
  *
  * --api-key-env names an environment variable holding the key (e.g. TYPESAFE_AI_API_KEY for Jev).
  * --cold-start-ms / --baseline-vram-mib are measured by bench/containers.ps1 before this starts.

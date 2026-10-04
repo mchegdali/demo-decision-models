@@ -65,9 +65,20 @@ single question written once for every model (public tasks).
 
 - **Clef-flash**: the GPU run uses `meossistant/clef-flash-4bit` (community NF4 quantization,
   ~6 GB), because the official BF16 weights (~18 GB) don't fit 12 GB of VRAM. The CPU run uses the
-  official `Cloudflare/clef-flash` in BF16. Both are served by `infra/clef/serve.py`, which calls
-  the checkpoint's own `joint_schema_model.py` encoding and answer code.
-- **Clef (27B)**: too large for either device alone (54 GB in BF16). The GPU run loads it in NF4
+  official `Cloudflare/clef-flash` in BF16. Both were served by a custom FastAPI server around the
+  checkpoint's own `joint_schema_model.py` (`infra/clef/serve.py`, removed once Ollama served
+  Clef; see commit 743bb2d).
+- **Clef-flash on Ollama** (`clef-flash-ollama-*`): `clef-flash:9b-q8_0` from the Ollama library
+  on Ollama 0.35.1 (native `/v1/systemone`), the same weights on both devices. Q8_0 (~11 GB) is
+  the smallest CUDA tag Ollama publishes. A 4-bit build wasn't possible: Ollama's Linux build
+  can't import safetensors (that path needs MLX, which only ships on macOS) or requantize a
+  GGUF, and the community 4-bit GGUFs that keep the decision head use llama.cpp's `clef`
+  architecture, which Ollama 0.35.1's bundled llama.cpp can't load. Weights are pulled ahead of
+  the run, so cold start excludes the download.
+- **Clef on Ollama** (`clef-ollama-*`): `clef:27b-q4_k_m` (~18 GB); on the GPU, Ollama keeps
+  what fits in 12 GB of VRAM and runs the remaining layers on the CPU.
+- **Tev1**: `tev1:0.8b-q8_0` and `tev1:4b-q8_0` on Ollama 0.35.1, the same weights on both devices.
+- **Clef (27B), custom server**: too large for either device alone (54 GB in BF16). The GPU run loads it in NF4
   (quantized while loading, about 15 GB) onto the GPU and lets the Windows driver spill what
   doesn't fit into system memory, as Kev 9B does. An explicit GPU/CPU layer split
   (`accelerate` offload) was tried first and can't work: `accelerate` can't stream 4-bit layers
