@@ -8,6 +8,8 @@
  *
  * --api-key-env names an environment variable holding the key (e.g. TYPESAFE_AI_API_KEY for Jev).
  * --cold-start-ms / --baseline-vram-mib are measured by bench/containers.ps1 before this starts.
+ * --ollama-url (a remote Ollama root, set by bench/remote.ps1) reads memory from its /api/ps
+ * instead of the local GPU and container.
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { createHash } from "node:crypto";
@@ -31,6 +33,7 @@ const { values: args } = parseArgs({
     "scaling-reps": { type: "string", default: "20" },
     "cold-start-ms": { type: "string" },
     "baseline-vram-mib": { type: "string" },
+    "ollama-url": { type: "string" },
     notes: { type: "string" },
   },
 });
@@ -105,7 +108,7 @@ for (const c of cases
   await timed.track(() => c.run(model));
 }
 
-const sampler = startMemorySampler(args.container);
+const sampler = startMemorySampler(args.container, 2000, args["ollama-url"]);
 const startedAt = new Date().toISOString();
 const started = performance.now();
 const records: CaseRecord[] = [];

@@ -77,6 +77,18 @@ single question written once for every model (public tasks).
   the run, so cold start excludes the download.
 - **Clef on Ollama** (`clef-ollama-*`): `clef:27b-q4_k_m` (~18 GB); on the GPU, Ollama keeps
   what fits in 12 GB of VRAM and runs the remaining layers on the CPU.
+- **Clef on RunPod** (`clef-ollama-gpu-16gb` / `-24gb` / `-48gb`): the same `clef:27b-q4_k_m` on
+  `ollama/ollama:0.35.1`, served from a rented RunPod Secure Cloud pod per GPU class (RTX A4000
+  16 GB, RTX 4090 24 GB in EUR-IS-1, L40S 48 GB in US-TX-4, the only L40S stock available)
+  through `bench/remote.ps1`. The bench client still runs on the desktop, so **every latency
+  includes the network round trip** to the pod, given in each run's notes (p50 of 20
+  `GET /api/version`). Weights are pulled before the run; cold start is weight load + first
+  decision, which depends on the host's disk. Peak VRAM / RAM come from Ollama's `/api/ps`
+  (model memory on the GPU / offloaded to the CPU), not `nvidia-smi`. The model's own
+  16384-token context overrides `OLLAMA_CONTEXT_LENGTH`, so all pods run at 16384. The three
+  runs went in parallel, one pod each, and each pod was deleted when its run ended.
+  `clef-flash-ollama-gpu-16gb` repeats the local `clef-flash-ollama-gpu` run the same way on a
+  Community Cloud RTX A4000 16 GB, to check whether the local 12 GB card limited Clef-flash.
 - **Tev1**: `tev1:0.8b-q8_0` and `tev1:4b-q8_0` on Ollama 0.35.1, the same weights on both devices.
 - **Clef (27B), custom server**: too large for either device alone (54 GB in BF16). The GPU run loads it in NF4
   (quantized while loading, about 15 GB) onto the GPU and lets the Windows driver spill what

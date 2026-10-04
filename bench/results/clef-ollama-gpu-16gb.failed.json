@@ -1,0 +1,5 @@
+{
+  "label": "clef-ollama-gpu-16gb",
+  "device": "gpu",
+  "reason": "RunPod RTX A4000 16GB, ollama/ollama:0.35.1, clef:27b-q4_k_m. The model never loaded: Ollama put 53 of 65 layers on the GPU, leaving no room for the 5.2 GB prompt-processing compute buffer (the model's own 16384-token context overrides OLLAMA_CONTEXT_LENGTH=4096), and every load failed with 'cudaMalloc failed: out of memory'. Retrying with OLLAMA_GPU_OVERHEAD=6GiB did not change the layer split. A third try with LLAMA_ARG_FIT_TARGET=6144 was stopped before it loaded and the pod deleted."
+}

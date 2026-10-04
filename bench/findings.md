@@ -31,7 +31,18 @@ changes latency, memory and cold start, so a CPU deployment can be judged on spe
   (ECE 0.047). Its latency grows slowly with questions (2.5× from 1 to 7). The CPU run used the
   official BF16 weights, which this CPU has no instructions for: it took about 75 s per request,
   was projected at 37+ hours, and was stopped after 150 items.
-- **Clef (27B)**: not measured on this machine. An explicit GPU/CPU layer split can't work here: `accelerate` can't stream 4-bit layers to the GPU, and keeping the CPU half in BF16 doesn't fit the 26 GB VM. Loading all of it in NF4 on the GPU (about 15 GB, with the overflow spilled to system memory) ran the 32 GB host out of RAM while the weights were being quantized. In NF4 it likely needs a GPU with more than 16 GB of VRAM.
+- **Clef (27B)**: not measured on this machine. An explicit GPU/CPU layer split can't work here: `accelerate` can't stream 4-bit layers to the GPU, and keeping the CPU half in BF16 doesn't fit the 26 GB VM. Loading all of it in NF4 on the GPU (about 15 GB, with the overflow spilled to system memory) ran the 32 GB host out of RAM while the weights were being quantized.
+  On rented RunPod GPUs (Ollama `clef:27b-q4_k_m`), it needs **24 GB**: it takes 20.4 GB, all
+  on the GPU. On a 16 GB RTX A4000 it never loaded (out of memory for the compute buffer; see
+  the failed runs). On an RTX 4090 it scores 89.2 EN / 85.3 FR, the best of any open model here,
+  at p50 460 ms / p95 720 ms, including an 87 ms network round trip. Most of its gain over
+  Clef-flash is PAWS-X (87.5 / 86.5 against 78 / 77); elsewhere the two are within about two
+  points. A 48 GB L40S gives the same answers and no speed-up; it was slower here only because
+  it sat in Texas (231 ms round trip).
+- **Clef-flash wasn't limited by the local GPU.** It already ran fully on the RTX 4070 (33/33
+  layers, 16384-token context). The same `clef-flash:9b-q8_0` on a rented 16 GB A4000 scores the
+  same (87.6 / 84.5) and is slower (p50 716 ms with a 74 ms round trip), because the A4000 is not
+  a faster card than the 4070 and every request crosses the network.
 - **Nimble 9B**: the smallest EN−FR gap with Jev, and perfect fast-path in both languages. On the
   CPU it is accurate but takes 5.6 s p50 and 19 s p95 (14.4 GiB RAM).
 - **Kev 4B and 9B**: close to Jev on accuracy (86.5–86.8 EN; 9B has a 2.3-point FR gap), but

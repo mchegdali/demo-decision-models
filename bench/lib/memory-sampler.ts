@@ -52,10 +52,32 @@ export async function sampleVramOnce(): Promise<number | undefined> {
   return vramMiB();
 }
 
-/** Polls GPU memory and the container's RAM every `intervalMs` until stopped; keeps the peaks. */
+/**
+ * Memory of the models a remote Ollama has loaded (`GET /api/ps`): VRAM is the part on the GPU,
+ * RAM the part offloaded to the CPU. Used when the server runs on a rented pod, not locally.
+ */
+async function ollamaMiB(ollamaUrl: string): Promise<[number | undefined, number | undefined]> {
+  try {
+    const response = await fetch(`${ollamaUrl}/api/ps`, { signal: AbortSignal.timeout(10000) });
+    const { models } = (await response.json()) as {
+      models: { size: number; size_vram: number }[];
+    };
+    const vram = models.reduce((sum, m) => sum + m.size_vram, 0);
+    const size = models.reduce((sum, m) => sum + m.size, 0);
+    return [vram / 1048576, (size - vram) / 1048576];
+  } catch {
+    return [undefined, undefined];
+  }
+}
+
+/**
+ * Polls GPU memory and the container's RAM every `intervalMs` until stopped; keeps the peaks.
+ * With `ollamaUrl`, reads both from that Ollama server's `/api/ps` instead.
+ */
 export function startMemorySampler(
   container: string | undefined,
   intervalMs = 2000,
+  ollamaUrl?: string,
 ): { stop(): Promise<MemoryPeaks> } {
   let peakVram: number | undefined;
   let peakRam: number | undefined;
@@ -64,10 +86,9 @@ export function startMemorySampler(
 
   const loop = (async () => {
     while (running) {
-      const [vram, ram] = await Promise.all([
-        vramMiB(),
-        container ? containerRamMiB(container) : undefined,
-      ]);
+      const [vram, ram] = ollamaUrl
+        ? await ollamaMiB(ollamaUrl)
+        : await Promise.all([vramMiB(), container ? containerRamMiB(container) : undefined]);
       if (vram !== undefined) peakVram = Math.max(peakVram ?? 0, vram);
       if (ram !== undefined) peakRam = Math.max(peakRam ?? 0, ram);
       samples += 1;
