@@ -1,0 +1,400 @@
+{"id":"massive-102","lang":"en","state":"what's this week's weather","gold":"weather_query"}
+{"id":"massive-1042","lang":"en","state":"open the folder app please","gold":"takeaway_order"}
+{"id":"massive-1043","lang":"en","state":"call the nearest thai restaurant with delivery","gold":"takeaway_order"}
+{"id":"massive-1120","lang":"en","state":"is there any special in politic","gold":"news_query"}
+{"id":"massive-1124","lang":"en","state":"get sia's cheap thrills ready to play next","gold":"play_music"}
+{"id":"massive-1127","lang":"en","state":"play all songs on shuffle","gold":"play_music"}
+{"id":"massive-1202","lang":"en","state":"present time in new york","gold":"datetime_query"}
+{"id":"massive-12127","lang":"en","state":"i need to go to dundee at five am on sunday by train","gold":"transport_ticket"}
+{"id":"massive-12162","lang":"en","state":"can you book a train ticket","gold":"transport_ticket"}
+{"id":"massive-12233","lang":"en","state":"google train tickets to washington d. c.","gold":"transport_ticket"}
+{"id":"massive-12281","lang":"en","state":"please book a train ticket from london to manchester","gold":"transport_ticket"}
+{"id":"massive-12291","lang":"en","state":"ticket for bombay","gold":"transport_ticket"}
+{"id":"massive-12293","lang":"en","state":"ticket for delhi","gold":"transport_ticket"}
+{"id":"massive-12339","lang":"en","state":"book a train ticket for one one way for this tuesday at nine am","gold":"transport_ticket"}
+{"id":"massive-12340","lang":"en","state":"can you please book train tickets for two for this friday","gold":"transport_ticket"}
+{"id":"massive-12381","lang":"en","state":"book a train ticket from baltimore maryland to new york new york","gold":"transport_ticket"}
+{"id":"massive-12453","lang":"en","state":"book train best deal","gold":"transport_ticket"}
+{"id":"massive-12468","lang":"en","state":"find a train ticket to philadelphia","gold":"transport_ticket"}
+{"id":"massive-12511","lang":"en","state":"travel book a train ticket","gold":"transport_ticket"}
+{"id":"massive-12536","lang":"en","state":"book me a train ticket to barcelona please","gold":"transport_ticket"}
+{"id":"massive-12537","lang":"en","state":"find me the cheapest train ticket to spain","gold":"transport_ticket"}
+{"id":"massive-12607","lang":"en","state":"i need to get a ticket via train to orlando from hwood","gold":"transport_ticket"}
+{"id":"massive-12689","lang":"en","state":"book a train ticket from here to charleston west virginia at eight am today","gold":"transport_ticket"}
+{"id":"massive-12723","lang":"en","state":"buy me a ticket to boston","gold":"transport_ticket"}
+{"id":"massive-12724","lang":"en","state":"find me a train ticket to boston","gold":"transport_ticket"}
+{"id":"massive-12814","lang":"en","state":"please book a ticket form jaipur to mumbai on tuesday","gold":"transport_ticket"}
+{"id":"massive-12874","lang":"en","state":"train ticket please","gold":"transport_ticket"}
+{"id":"massive-1294","lang":"en","state":"fast me the news of academy awards","gold":"news_query"}
+{"id":"massive-132","lang":"en","state":"order a takeaway","gold":"takeaway_order"}
+{"id":"massive-1377","lang":"en","state":"please turn off the light of my son's room","gold":"iot_hue_lightoff"}
+{"id":"massive-1516","lang":"en","state":"order a pizza with sausage from domino's","gold":"takeaway_order"}
+{"id":"massive-15213","lang":"en","state":"what is the trending now","gold":"news_query"}
+{"id":"massive-15796","lang":"en","state":"email chelsea","gold":"email_sendemail"}
+{"id":"massive-15841","lang":"en","state":"compose a new email to ray","gold":"email_sendemail"}
+{"id":"massive-15845","lang":"en","state":"how its come to us","gold":"email_sendemail"}
+{"id":"massive-15906","lang":"en","state":"reply thank you to john","gold":"email_sendemail"}
+{"id":"massive-16029","lang":"en","state":"please compose a new email to coworker","gold":"email_sendemail"}
+{"id":"massive-16049","lang":"en","state":"i want to send an email to my family do you help me","gold":"email_sendemail"}
+{"id":"massive-1607","lang":"en","state":"tell me current time in los angels","gold":"datetime_query"}
+{"id":"massive-16201","lang":"en","state":"please load new email for bruce and send message now","gold":"email_sendemail"}
+{"id":"massive-16296","lang":"en","state":"send an email to mom to tell her wyatt's birthday party is on sunday","gold":"email_sendemail"}
+{"id":"massive-16320","lang":"en","state":"i want to reply to bob smith's email","gold":"email_sendemail"}
+{"id":"massive-16375","lang":"en","state":"compose an email to bob","gold":"email_sendemail"}
+{"id":"massive-16410","lang":"en","state":"compose email","gold":"email_sendemail"}
+{"id":"massive-16501","lang":"en","state":"please send a mail to my friend divya how are you","gold":"email_sendemail"}
+{"id":"massive-16560","lang":"en","state":"respond to my bosses email with the word that i will be in at four in the evening","gold":"email_sendemail"}
+{"id":"massive-1666","lang":"en","state":"so clean news in past six hours is what","gold":"news_query"}
+{"id":"massive-16754","lang":"en","state":"dictate email","gold":"email_sendemail"}
+{"id":"massive-16791","lang":"en","state":"compose a new email but i got a new address this time brandon at example dot com","gold":"email_sendemail"}
+{"id":"massive-16872","lang":"en","state":"find naty from my contacts and send her an email","gold":"email_sendemail"}
+{"id":"massive-16891","lang":"en","state":"send john smith and email","gold":"email_sendemail"}
+{"id":"massive-16916","lang":"en","state":"hey reply a mail which i received","gold":"email_sendemail"}
+{"id":"massive-17020","lang":"en","state":"reply to last received email","gold":"email_sendemail"}
+{"id":"massive-17042","lang":"en","state":"write an email for john at gmail dot com","gold":"email_sendemail"}
+{"id":"massive-1719","lang":"en","state":"set alarm of only monday morning six am","gold":"alarm_set"}
+{"id":"massive-174","lang":"en","state":"set wake up thursday seven am","gold":"alarm_set"}
+{"id":"massive-1759","lang":"en","state":"give me news on president trump","gold":"news_query"}
+{"id":"massive-1784","lang":"en","state":"turn off the dining room","gold":"iot_hue_lightoff"}
+{"id":"massive-1786","lang":"en","state":"switch off the master's bedroom","gold":"iot_hue_lightoff"}
+{"id":"massive-1811","lang":"en","state":"start playlist and play music","gold":"play_music"}
+{"id":"massive-182","lang":"en","state":"play my rock playlist","gold":"play_music"}
+{"id":"massive-1830","lang":"en","state":"i want to eat some spicy thing","gold":"takeaway_order"}
+{"id":"massive-1831","lang":"en","state":"order one pizza from pizza hut","gold":"takeaway_order"}
+{"id":"massive-1913","lang":"en","state":"wake me up at five am","gold":"alarm_set"}
+{"id":"massive-1982","lang":"en","state":"set alarm at six thirty am","gold":"alarm_set"}
+{"id":"massive-2146","lang":"en","state":"what's the date of the winter solstice two years from now","gold":"datetime_query"}
+{"id":"massive-216","lang":"en","state":"how is the weather like today","gold":"weather_query"}
+{"id":"massive-2160","lang":"en","state":"i'm going to sleep now","gold":"iot_hue_lightoff"}
+{"id":"massive-2167","lang":"en","state":"get me up in half an hour","gold":"alarm_set"}
+{"id":"massive-2225","lang":"en","state":"play ella fitzgerals get happy","gold":"play_music"}
+{"id":"massive-2230","lang":"en","state":"turn off kitchen light","gold":"iot_hue_lightoff"}
+{"id":"massive-2255","lang":"en","state":"can i order take out from licari's","gold":"takeaway_order"}
+{"id":"massive-2296","lang":"en","state":"keep me up to date with today's n. b. a. scores","gold":"news_query"}
+{"id":"massive-2298","lang":"en","state":"put the lights off now","gold":"iot_hue_lightoff"}
+{"id":"massive-2322","lang":"en","state":"what's the weather like tomorrow","gold":"weather_query"}
+{"id":"massive-2334","lang":"en","state":"add an alarm for tomorrow morning at six am","gold":"alarm_set"}
+{"id":"massive-2336","lang":"en","state":"noodles one pack make it as takeaway","gold":"takeaway_order"}
+{"id":"massive-2338","lang":"en","state":"make an order for noodles one pack make it as takeaway order","gold":"takeaway_order"}
+{"id":"massive-2414","lang":"en","state":"i want to order a pizza from michael's pizza","gold":"takeaway_order"}
+{"id":"massive-2447","lang":"en","state":"i feel like having soup for lunch order from wangs kitchen restaurant a chicken manchow soup","gold":"takeaway_order"}
+{"id":"massive-2480","lang":"en","state":"call for take-out","gold":"takeaway_order"}
+{"id":"massive-2497","lang":"en","state":"today is what date","gold":"datetime_query"}
+{"id":"massive-2564","lang":"en","state":"please set the alarm for next friday at six thirty am","gold":"alarm_set"}
+{"id":"massive-2578","lang":"en","state":"turn off the porch light","gold":"iot_hue_lightoff"}
+{"id":"massive-2703","lang":"en","state":"please play folk music","gold":"play_music"}
+{"id":"massive-2711","lang":"en","state":"shut the lights off","gold":"iot_hue_lightoff"}
+{"id":"massive-2774","lang":"en","state":"shut off lights","gold":"iot_hue_lightoff"}
+{"id":"massive-2898","lang":"en","state":"are there any updates in regard to the election","gold":"news_query"}
+{"id":"massive-2965","lang":"en","state":"turn office lights off","gold":"iot_hue_lightoff"}
+{"id":"massive-3037","lang":"en","state":"front page news articles please","gold":"news_query"}
+{"id":"massive-3080","lang":"en","state":"it's time for junk food","gold":"takeaway_order"}
+{"id":"massive-310","lang":"en","state":"what day is new year's eve this year","gold":"datetime_query"}
+{"id":"massive-3118","lang":"en","state":"what is eastern standard time right noe","gold":"datetime_query"}
+{"id":"massive-3213","lang":"en","state":"set a new alarm for that time","gold":"alarm_set"}
+{"id":"massive-3338","lang":"en","state":"report weather for largo","gold":"weather_query"}
+{"id":"massive-3378","lang":"en","state":"no lights in the kitchen","gold":"iot_hue_lightoff"}
+{"id":"massive-3398","lang":"en","state":"please set my alarm for five p. m.","gold":"alarm_set"}
+{"id":"massive-3426","lang":"en","state":"what degree is it outside","gold":"weather_query"}
+{"id":"massive-3492","lang":"en","state":"let's play my most played song list","gold":"play_music"}
+{"id":"massive-355","lang":"en","state":"what day of the week is first april","gold":"datetime_query"}
+{"id":"massive-3603","lang":"en","state":"what's the latest news from xinhua","gold":"news_query"}
+{"id":"massive-3631","lang":"en","state":"hey google play some jazz music for me","gold":"play_music"}
+{"id":"massive-366","lang":"en","state":"please tell me the latest news","gold":"news_query"}
+{"id":"massive-369","lang":"en","state":"switch off the lights","gold":"iot_hue_lightoff"}
+{"id":"massive-3695","lang":"en","state":"i want an alarm for three today","gold":"alarm_set"}
+{"id":"massive-3761","lang":"en","state":"get me up at eight am","gold":"alarm_set"}
+{"id":"massive-3780","lang":"en","state":"play my midnight love playlist","gold":"play_music"}
+{"id":"massive-3835","lang":"en","state":"i want to order chinese take-out","gold":"takeaway_order"}
+{"id":"massive-3960","lang":"en","state":"say the time","gold":"datetime_query"}
+{"id":"massive-3980","lang":"en","state":"please play shape of you by said sheeran","gold":"play_music"}
+{"id":"massive-3986","lang":"en","state":"set an alarm at six am","gold":"alarm_set"}
+{"id":"massive-3993","lang":"en","state":"can you make the lights go out","gold":"iot_hue_lightoff"}
+{"id":"massive-4073","lang":"en","state":"what day is the fifth","gold":"datetime_query"}
+{"id":"massive-4088","lang":"en","state":"turn off overhead light","gold":"iot_hue_lightoff"}
+{"id":"massive-4132","lang":"en","state":"tell me the percentage of the chance of rain in seattle washington for today","gold":"weather_query"}
+{"id":"massive-4168","lang":"en","state":"please check the weather in kansas","gold":"weather_query"}
+{"id":"massive-428","lang":"en","state":"turn off the bathroom lights","gold":"iot_hue_lightoff"}
+{"id":"massive-4319","lang":"en","state":"i need to get up at ten tomorrow","gold":"alarm_set"}
+{"id":"massive-437","lang":"en","state":"open bad religion folder","gold":"play_music"}
+{"id":"massive-4377","lang":"en","state":"what's the current weather","gold":"weather_query"}
+{"id":"massive-4439","lang":"en","state":"how is the weather in san francisco","gold":"weather_query"}
+{"id":"massive-4477","lang":"en","state":"play song next","gold":"play_music"}
+{"id":"massive-451","lang":"en","state":"get me the latest stock price for costco","gold":"news_query"}
+{"id":"massive-4544","lang":"en","state":"order a twelve piece honey mustard wing combo with seasonimg altnon the fries and a sprite as the drink","gold":"takeaway_order"}
+{"id":"massive-4547","lang":"en","state":"start the dogwalking playlist","gold":"play_music"}
+{"id":"massive-4614","lang":"en","state":"will the temperature be higher than forty tomorrow","gold":"weather_query"}
+{"id":"massive-4662","lang":"en","state":"the news from c. b. s. alexa","gold":"news_query"}
+{"id":"massive-4667","lang":"en","state":"current time in","gold":"datetime_query"}
+{"id":"massive-4692","lang":"en","state":"play me a song by van halen","gold":"play_music"}
+{"id":"massive-4772","lang":"en","state":"tell me the time in this time zone","gold":"datetime_query"}
+{"id":"massive-4813","lang":"en","state":"what is the time in another city","gold":"datetime_query"}
+{"id":"massive-486","lang":"en","state":"what time is it in new york city","gold":"datetime_query"}
+{"id":"massive-4930","lang":"en","state":"turn on an alarm for three thirty p. m. today","gold":"alarm_set"}
+{"id":"massive-4933","lang":"en","state":"will it rain now","gold":"weather_query"}
+{"id":"massive-4957","lang":"en","state":"what day of the week is the twenty third of this month","gold":"datetime_query"}
+{"id":"massive-5037","lang":"en","state":"how cold is today","gold":"weather_query"}
+{"id":"massive-5082","lang":"en","state":"new alarm for six am","gold":"alarm_set"}
+{"id":"massive-5196","lang":"en","state":"i want to know about the brexit","gold":"news_query"}
+{"id":"massive-5245","lang":"en","state":"set environmental news notification","gold":"news_query"}
+{"id":"massive-5339","lang":"en","state":"low cooling condition","gold":"weather_query"}
+{"id":"massive-5411","lang":"en","state":"what are the top stories on c. n. n.","gold":"news_query"}
+{"id":"massive-5433","lang":"en","state":"is it going to rain later","gold":"weather_query"}
+{"id":"massive-5488","lang":"en","state":"order pizza for delivery","gold":"takeaway_order"}
+{"id":"massive-5524","lang":"en","state":"weather at the moment","gold":"weather_query"}
+{"id":"massive-5570","lang":"en","state":"find food and order","gold":"takeaway_order"}
+{"id":"massive-5640","lang":"en","state":"display date","gold":"datetime_query"}
+{"id":"massive-5678","lang":"en","state":"august fifteenth is what day of the week","gold":"datetime_query"}
+{"id":"massive-5703","lang":"en","state":"time now","gold":"datetime_query"}
+{"id":"massive-5721","lang":"en","state":"show me tomorrows weather in this area","gold":"weather_query"}
+{"id":"massive-5722","lang":"en","state":"display the seven day forecast for this week","gold":"weather_query"}
+{"id":"massive-576","lang":"en","state":"play all by playlist","gold":"play_music"}
+{"id":"massive-5820","lang":"en","state":"comfort my ears with arijit singh","gold":"play_music"}
+{"id":"massive-5840","lang":"en","state":"i need to order some food from papa john's","gold":"takeaway_order"}
+{"id":"massive-585","lang":"en","state":"show latest news","gold":"news_query"}
+{"id":"massive-5966","lang":"en","state":"can you please order some food for me","gold":"takeaway_order"}
+{"id":"massive-6027","lang":"en","state":"turn on favorite songs","gold":"play_music"}
+{"id":"massive-6041","lang":"en","state":"hey olly turn off the light please","gold":"iot_hue_lightoff"}
+{"id":"massive-6074","lang":"en","state":"turn off bedroom light at nine thirty p. m.","gold":"iot_hue_lightoff"}
+{"id":"massive-6116","lang":"en","state":"info on this week weather","gold":"weather_query"}
+{"id":"massive-612","lang":"en","state":"please ring the wake up alarm at eight am next saturday","gold":"alarm_set"}
+{"id":"massive-6129","lang":"en","state":"keep me up to date with the world news","gold":"news_query"}
+{"id":"massive-614","lang":"en","state":"start playlist","gold":"play_music"}
+{"id":"massive-6410","lang":"en","state":"what's happening in france today","gold":"news_query"}
+{"id":"massive-6764","lang":"en","state":"remind me to wash the windows","gold":"calendar_set"}
+{"id":"massive-6865","lang":"en","state":"set up a notification about tomorrow's meeting at ten","gold":"calendar_set"}
+{"id":"massive-6959","lang":"en","state":"remind me about my meeting an hour before it begins","gold":"calendar_set"}
+{"id":"massive-7055","lang":"en","state":"schedule a meeting with matt at eleven am on thursday","gold":"calendar_set"}
+{"id":"massive-712","lang":"en","state":"i want to hear the last news from c. n. n.","gold":"news_query"}
+{"id":"massive-730","lang":"en","state":"turn the lights off","gold":"iot_hue_lightoff"}
+{"id":"massive-7455","lang":"en","state":"remind me about the party tomorrow","gold":"calendar_set"}
+{"id":"massive-7520","lang":"en","state":"remind me everyday at two p. m. for lunch","gold":"calendar_set"}
+{"id":"massive-7686","lang":"en","state":"include mike and jack to festival calendar","gold":"calendar_set"}
+{"id":"massive-7808","lang":"en","state":"remind me i take mom to the hairdresser's thursday at one thousand one hundred am","gold":"calendar_set"}
+{"id":"massive-783","lang":"en","state":"play love songs","gold":"play_music"}
+{"id":"massive-7918","lang":"en","state":"calendar event send invite bill malinda","gold":"calendar_set"}
+{"id":"massive-7919","lang":"en","state":"new meeting add bill and malinda as attendees","gold":"calendar_set"}
+{"id":"massive-8033","lang":"en","state":"what day does easter fall on","gold":"datetime_query"}
+{"id":"massive-8085","lang":"en","state":"i'd like to set a date for this week","gold":"calendar_set"}
+{"id":"massive-8140","lang":"en","state":"set a reminder for the thirteenth that i have a lunch with dale","gold":"calendar_set"}
+{"id":"massive-8245","lang":"en","state":"i would need to be notified of church services on sundays at eleven am","gold":"calendar_set"}
+{"id":"massive-826","lang":"en","state":"what is the current temperature outside","gold":"weather_query"}
+{"id":"massive-8261","lang":"en","state":"send me an alert and hour before my next appointment","gold":"calendar_set"}
+{"id":"massive-8269","lang":"en","state":"thirty minute reminder on meeting for tuesday","gold":"calendar_set"}
+{"id":"massive-8300","lang":"en","state":"save event for five p. m. to six p. m. on march eighteenth","gold":"calendar_set"}
+{"id":"massive-832","lang":"en","state":"hey what will be the predicted weather for tomorrow","gold":"weather_query"}
+{"id":"massive-8343","lang":"en","state":"is it wednesday","gold":"datetime_query"}
+{"id":"massive-8539","lang":"en","state":"remind me about","gold":"calendar_set"}
+{"id":"massive-86","lang":"en","state":"what date is it today","gold":"datetime_query"}
+{"id":"massive-8651","lang":"en","state":"notify me about the event in my calendar","gold":"calendar_set"}
+{"id":"massive-8731","lang":"en","state":"set a repeating reminder alarm for the facebook event i have to attend on seventh april","gold":"alarm_set"}
+{"id":"massive-8741","lang":"en","state":"set an alert for two p. m.","gold":"alarm_set"}
+{"id":"massive-8882","lang":"en","state":"make an alarm for the meeting with bob at seven today","gold":"alarm_set"}
+{"id":"massive-89","lang":"en","state":"could you order sushi for tonight dinner","gold":"takeaway_order"}
+{"id":"massive-8977","lang":"en","state":"just set me reminders about pending bill payments","gold":"calendar_set"}
+{"id":"massive-9062","lang":"en","state":"can you put in lee's birthday on the twenty second of june","gold":"calendar_set"}
+{"id":"massive-939","lang":"en","state":"set my alarm for seven am","gold":"alarm_set"}
+{"id":"massive-969","lang":"en","state":"news articles on a particular subject","gold":"news_query"}
+{"id":"massive-9738","lang":"en","state":"could you please play the classical music for me","gold":"play_music"}
+{"id":"massive-997","lang":"en","state":"turn the living room's light off","gold":"iot_hue_lightoff"}
+{"id":"massive-999","lang":"en","state":"could you turn the light off","gold":"iot_hue_lightoff"}
+{"id":"massive-102","lang":"fr","state":"quel temps fait-il cette semaine","gold":"weather_query"}
+{"id":"massive-1042","lang":"fr","state":"ouvrez l'application de dossier s'il vous plaît","gold":"takeaway_order"}
+{"id":"massive-1043","lang":"fr","state":"appelle le restaurant thaïlandais le plus proche avec livraison","gold":"takeaway_order"}
+{"id":"massive-1120","lang":"fr","state":"y a-t-il quelque chose de spécial en politic","gold":"news_query"}
+{"id":"massive-1124","lang":"fr","state":"préparer ne me quitte pas de jacques brel à être ensuite lancé","gold":"play_music"}
+{"id":"massive-1127","lang":"fr","state":"jouer toutes les chansons en mode aléatoire","gold":"play_music"}
+{"id":"massive-1202","lang":"fr","state":"heure actuelle à paris","gold":"datetime_query"}
+{"id":"massive-12127","lang":"fr","state":"je dois aller à mouscron à cinq heures du matin le dimanche en train","gold":"transport_ticket"}
+{"id":"massive-12162","lang":"fr","state":"pouvez-vous réserver un billet de train","gold":"transport_ticket"}
+{"id":"massive-12233","lang":"fr","state":"billets de train google pour genève","gold":"transport_ticket"}
+{"id":"massive-12281","lang":"fr","state":"veuillez réserver un billet de train de paris à marseille","gold":"transport_ticket"}
+{"id":"massive-12291","lang":"fr","state":"billet pour paris","gold":"transport_ticket"}
+{"id":"massive-12293","lang":"fr","state":"un billet pour paris","gold":"transport_ticket"}
+{"id":"massive-12339","lang":"fr","state":"réserve un billet de train pour un aller simple pour ce mardi à neuf heures","gold":"transport_ticket"}
+{"id":"massive-12340","lang":"fr","state":"peux-tu s'il te plaît réserver des billets de train pour deux pour ce vendredi","gold":"transport_ticket"}
+{"id":"massive-12381","lang":"fr","state":"réserver un billet de train de marseille à nantes","gold":"transport_ticket"}
+{"id":"massive-12453","lang":"fr","state":"réserve train meilleure offre","gold":"transport_ticket"}
+{"id":"massive-12468","lang":"fr","state":"trouver un billet de train pour paris","gold":"transport_ticket"}
+{"id":"massive-12511","lang":"fr","state":"réserver un billet de train pour voyager","gold":"transport_ticket"}
+{"id":"massive-12536","lang":"fr","state":"réserve moi un ticket de train pour marseille s'il te plait","gold":"transport_ticket"}
+{"id":"massive-12537","lang":"fr","state":"trouve moi le billet de train le moins cher pour espagne","gold":"transport_ticket"}
+{"id":"massive-12607","lang":"fr","state":"j'ai besoin d'obtenir un billet en train pour orlando depuis hwood","gold":"transport_ticket"}
+{"id":"massive-12689","lang":"fr","state":"réserve un billet de train d'ici à paris à huit heures du matin aujourd'hui","gold":"transport_ticket"}
+{"id":"massive-12723","lang":"fr","state":"achetez-moi un billet pour rosanne","gold":"transport_ticket"}
+{"id":"massive-12724","lang":"fr","state":"trouve moi un billet de train pour montréal","gold":"transport_ticket"}
+{"id":"massive-12814","lang":"fr","state":"veuillez réserver un billet de lyon à paris le mardi","gold":"transport_ticket"}
+{"id":"massive-12874","lang":"fr","state":"le billet du train s'il te plait","gold":"transport_ticket"}
+{"id":"massive-1294","lang":"fr","state":"vite moi les nouvelles des academy awards","gold":"news_query"}
+{"id":"massive-132","lang":"fr","state":"commande un repas à emporter","gold":"takeaway_order"}
+{"id":"massive-1377","lang":"fr","state":"veuillez éteindre la lumière de la chambre de mon fils","gold":"iot_hue_lightoff"}
+{"id":"massive-1516","lang":"fr","state":"commande une pizza aux saucisses chez domino's","gold":"takeaway_order"}
+{"id":"massive-15213","lang":"fr","state":"quelle est la tendance maintenant","gold":"news_query"}
+{"id":"massive-15796","lang":"fr","state":"envoi un email à douala","gold":"email_sendemail"}
+{"id":"massive-15841","lang":"fr","state":"compose un nouvel e-mail à ray","gold":"email_sendemail"}
+{"id":"massive-15845","lang":"fr","state":"comment ça nous arrive","gold":"email_sendemail"}
+{"id":"massive-15906","lang":"fr","state":"répond merci à jean","gold":"email_sendemail"}
+{"id":"massive-16029","lang":"fr","state":"s'il te plait rédige un nouvel e-mail à un collègue","gold":"email_sendemail"}
+{"id":"massive-16049","lang":"fr","state":"je veux envoyer un e-mail à ma famille m'aideras-tu","gold":"email_sendemail"}
+{"id":"massive-1607","lang":"fr","state":"dis-moi l'heure actuelle à bordeaux","gold":"datetime_query"}
+{"id":"massive-16201","lang":"fr","state":"s'il vous plaît charger un nouvel e-mail pour bruce et envoyer un message maintenant","gold":"email_sendemail"}
+{"id":"massive-16296","lang":"fr","state":"envoyer un e-mail à maman pour lui dire que la fête d'anniversaire de richard est dimanche","gold":"email_sendemail"}
+{"id":"massive-16320","lang":"fr","state":"je veux réplique à e-mail de bob smith","gold":"email_sendemail"}
+{"id":"massive-16375","lang":"fr","state":"rédige un e-mail à bob","gold":"email_sendemail"}
+{"id":"massive-16410","lang":"fr","state":"écrire un e-mail","gold":"email_sendemail"}
+{"id":"massive-16501","lang":"fr","state":"s'il vous plaît envoyez un mail à mon ami divya comment allez-vous","gold":"email_sendemail"}
+{"id":"massive-16560","lang":"fr","state":"répondre à l'e-mail de mon patron avec le mot que je serai à quatre heures du soir","gold":"email_sendemail"}
+{"id":"massive-1666","lang":"fr","state":"des nouvelles très claires au cours des six dernières heures sont ce que","gold":"news_query"}
+{"id":"massive-16754","lang":"fr","state":"discte un e-mail","gold":"email_sendemail"}
+{"id":"massive-16791","lang":"fr","state":"compose un nouvel e-mail mais j'ai une nouvelle adresse cette fois brandon arobase example point com","gold":"email_sendemail"}
+{"id":"massive-16872","lang":"fr","state":"trouver naty dans mes contacts et lui envoyer un e mail","gold":"email_sendemail"}
+{"id":"massive-16891","lang":"fr","state":"envoie un e-mail à jean dupont","gold":"email_sendemail"}
+{"id":"massive-16916","lang":"fr","state":"hey repond a un mail que j'ai recu","gold":"email_sendemail"}
+{"id":"massive-17020","lang":"fr","state":"répond au dernier e-mail reçu","gold":"email_sendemail"}
+{"id":"massive-17042","lang":"fr","state":"écris un e-mail pour jean arobas gmail point com","gold":"email_sendemail"}
+{"id":"massive-1719","lang":"fr","state":"régler l'alarme de seulement lundi matin six heures du matin","gold":"alarm_set"}
+{"id":"massive-174","lang":"fr","state":"régler le réveil jeudi à sept heures du matin","gold":"alarm_set"}
+{"id":"massive-1759","lang":"fr","state":"donne moi des nouvelles du president trump","gold":"news_query"}
+{"id":"massive-1784","lang":"fr","state":"éteindre la salle à manger","gold":"iot_hue_lightoff"}
+{"id":"massive-1786","lang":"fr","state":"éteindre la chambre principale","gold":"iot_hue_lightoff"}
+{"id":"massive-1811","lang":"fr","state":"ouvrir le playlist et jouer la musique","gold":"play_music"}
+{"id":"massive-182","lang":"fr","state":"joue ma playlist de rock","gold":"play_music"}
+{"id":"massive-1830","lang":"fr","state":"je veux manger quelque chose d'épicé","gold":"takeaway_order"}
+{"id":"massive-1831","lang":"fr","state":"commande une pizza chez pizza hut","gold":"takeaway_order"}
+{"id":"massive-1913","lang":"fr","state":"réveille-moi à cinq heures du matin","gold":"alarm_set"}
+{"id":"massive-1982","lang":"fr","state":"régler l'alarme à six heures trente du matin","gold":"alarm_set"}
+{"id":"massive-2146","lang":"fr","state":"quelle est la date du solstice d'hiver dans deux années","gold":"datetime_query"}
+{"id":"massive-216","lang":"fr","state":"quel temps fait-il aujourd'hui","gold":"weather_query"}
+{"id":"massive-2160","lang":"fr","state":"je vais aller dormir maintenant","gold":"iot_hue_lightoff"}
+{"id":"massive-2167","lang":"fr","state":"lève-moi dans une demi-heure","gold":"alarm_set"}
+{"id":"massive-2225","lang":"fr","state":"joue lorie pester dans mes rêves","gold":"play_music"}
+{"id":"massive-2230","lang":"fr","state":"éteindre la lumière de la cuisine","gold":"iot_hue_lightoff"}
+{"id":"massive-2255","lang":"fr","state":"puis-je commander à emporter de chez licari's","gold":"takeaway_order"}
+{"id":"massive-2296","lang":"fr","state":"tenez-moi au courant avec aujourd'hui n.b.a scores","gold":"news_query"}
+{"id":"massive-2298","lang":"fr","state":"éteins les lumières maintenant","gold":"iot_hue_lightoff"}
+{"id":"massive-2322","lang":"fr","state":"quel temps fera-t-il demain","gold":"weather_query"}
+{"id":"massive-2334","lang":"fr","state":"ajouter une alarme pour demain matin à six heures du matin","gold":"alarm_set"}
+{"id":"massive-2336","lang":"fr","state":"un paquet de nouilles à emporter","gold":"takeaway_order"}
+{"id":"massive-2338","lang":"fr","state":"fais une commande d'un paquet de nouilles marque le à emporter","gold":"takeaway_order"}
+{"id":"massive-2414","lang":"fr","state":"je veux commander une pizza chez michael's pizza","gold":"takeaway_order"}
+{"id":"massive-2447","lang":"fr","state":"j'ai envie d'avoir de la soupe pour le déjeuner commander du wangs kitchen restaurant une soupe au poulet manchow","gold":"takeaway_order"}
+{"id":"massive-2480","lang":"fr","state":"appelle à emporter","gold":"takeaway_order"}
+{"id":"massive-2497","lang":"fr","state":"quelle est la date d' aujourd'hui","gold":"datetime_query"}
+{"id":"massive-2564","lang":"fr","state":"veuillez régler l'alarme pour vendredi prochain à six heures trente du matin","gold":"alarm_set"}
+{"id":"massive-2578","lang":"fr","state":"éteindre la lumière du porche","gold":"iot_hue_lightoff"}
+{"id":"massive-2703","lang":"fr","state":"jouer s'il vous plaît de la musique folklorique","gold":"play_music"}
+{"id":"massive-2711","lang":"fr","state":"éteindre les lumières","gold":"iot_hue_lightoff"}
+{"id":"massive-2774","lang":"fr","state":"éteindre les lumières","gold":"iot_hue_lightoff"}
+{"id":"massive-2898","lang":"fr","state":"y a-t-il quelque mises à jour concerne de élection","gold":"news_query"}
+{"id":"massive-2965","lang":"fr","state":"éteindre les lumières du bureau","gold":"iot_hue_lightoff"}
+{"id":"massive-3037","lang":"fr","state":"article de presse en première page s'il vous plaît","gold":"news_query"}
+{"id":"massive-3080","lang":"fr","state":"c'est l'heure de la malbouffe","gold":"takeaway_order"}
+{"id":"massive-310","lang":"fr","state":"quel jour est le réveillon du nouvel an cette année","gold":"datetime_query"}
+{"id":"massive-3118","lang":"fr","state":"quelle est l'heure normale de l' est en ce moment","gold":"datetime_query"}
+{"id":"massive-3213","lang":"fr","state":"régler une nouvelle alarme pour cette heure","gold":"alarm_set"}
+{"id":"massive-3338","lang":"fr","state":"bulletin météo pour ohio","gold":"weather_query"}
+{"id":"massive-3378","lang":"fr","state":"pas de lumière dans la cuisine","gold":"iot_hue_lightoff"}
+{"id":"massive-3398","lang":"fr","state":"s'il vous plaît régler mon alarme pour cinq p. m.","gold":"alarm_set"}
+{"id":"massive-3426","lang":"fr","state":"à quel degré est-il à l'extérieur","gold":"weather_query"}
+{"id":"massive-3492","lang":"fr","state":"jouons ma chanson la plus écouter","gold":"play_music"}
+{"id":"massive-355","lang":"fr","state":"quel jour de la semaine est le premier avril","gold":"datetime_query"}
+{"id":"massive-3603","lang":"fr","state":"quelles sont les dernières nouvelles de xinhua","gold":"news_query"}
+{"id":"massive-3631","lang":"fr","state":"hey google joue la tous musique jazz pour moi","gold":"play_music"}
+{"id":"massive-366","lang":"fr","state":"s'il vous plaît dites-moi les dernières nouvelles","gold":"news_query"}
+{"id":"massive-369","lang":"fr","state":"éteindre les lumières","gold":"iot_hue_lightoff"}
+{"id":"massive-3695","lang":"fr","state":"je veux une alarme pour trois aujourd'hui","gold":"alarm_set"}
+{"id":"massive-3761","lang":"fr","state":"lève-moi à huit heures du matin","gold":"alarm_set"}
+{"id":"massive-3780","lang":"fr","state":"joue ma playlist ne me quitte pas","gold":"play_music"}
+{"id":"massive-3835","lang":"fr","state":"je veux commander des plats chinois à emporter","gold":"takeaway_order"}
+{"id":"massive-3960","lang":"fr","state":"dit l'heure","gold":"datetime_query"}
+{"id":"massive-3980","lang":"fr","state":"s'il te plaît joue je t'aime de lara fabian","gold":"play_music"}
+{"id":"massive-3986","lang":"fr","state":"régler une alarme à six heures du matin","gold":"alarm_set"}
+{"id":"massive-3993","lang":"fr","state":"peux-tu faire éteindre les lumières","gold":"iot_hue_lightoff"}
+{"id":"massive-4073","lang":"fr","state":"quel jour est le cinq","gold":"datetime_query"}
+{"id":"massive-4088","lang":"fr","state":"éteints la lumière du plafonnier","gold":"iot_hue_lightoff"}
+{"id":"massive-4132","lang":"fr","state":"dis-moi le pourcentage de chance de pluie à paris pour aujourd'hui","gold":"weather_query"}
+{"id":"massive-4168","lang":"fr","state":"s'il vous plaît vérifier la météo au lyon","gold":"weather_query"}
+{"id":"massive-428","lang":"fr","state":"éteindre les lumières de la salle de bain","gold":"iot_hue_lightoff"}
+{"id":"massive-4319","lang":"fr","state":"j'ai besoin de me lever à dix heures demain","gold":"alarm_set"}
+{"id":"massive-437","lang":"fr","state":"ouvrir le dossier phoenix","gold":"play_music"}
+{"id":"massive-4377","lang":"fr","state":"quel est le temps actuel","gold":"weather_query"}
+{"id":"massive-4439","lang":"fr","state":"quel temps fait-il à toronto","gold":"weather_query"}
+{"id":"massive-4477","lang":"fr","state":"mets la prochaine chanson","gold":"play_music"}
+{"id":"massive-451","lang":"fr","state":"obtenez-moi le dernier cours de l'action pour costco","gold":"news_query"}
+{"id":"massive-4544","lang":"fr","state":"commande un combo d'ailes de moutarde au miel de douze pièces avec assaisonnement alton les frites et un sprite comme boisson","gold":"takeaway_order"}
+{"id":"massive-4547","lang":"fr","state":"commencer la playlist de promenade de chien","gold":"play_music"}
+{"id":"massive-4614","lang":"fr","state":"la température sera-t-elle supérieure à quarante demain","gold":"weather_query"}
+{"id":"massive-4662","lang":"fr","state":"les nouvelles de c. b. s.","gold":"news_query"}
+{"id":"massive-4667","lang":"fr","state":"l'heure actuelle à","gold":"datetime_query"}
+{"id":"massive-4692","lang":"fr","state":"joue-moi une musique de jacques brel","gold":"play_music"}
+{"id":"massive-4772","lang":"fr","state":"dis-moi l'heure dans ce fuseau horaire","gold":"datetime_query"}
+{"id":"massive-4813","lang":"fr","state":"quelle heure est-il dans une autre ville","gold":"datetime_query"}
+{"id":"massive-486","lang":"fr","state":"quelle heure est-il dans la ville de new york","gold":"datetime_query"}
+{"id":"massive-4930","lang":"fr","state":"activer une alarme pendant trois heures trente p. m. aujourd'hui","gold":"alarm_set"}
+{"id":"massive-4933","lang":"fr","state":"va-t-il pleuvoir maintenant","gold":"weather_query"}
+{"id":"massive-4957","lang":"fr","state":"quel jour de la semaine est le vingt-trois de ce mois","gold":"datetime_query"}
+{"id":"massive-5037","lang":"fr","state":"combien il fait froid aujourd'hui","gold":"weather_query"}
+{"id":"massive-5082","lang":"fr","state":"nouvelle alarme pour six heures du matin","gold":"alarm_set"}
+{"id":"massive-5196","lang":"fr","state":"je veux savoir pour the brexit","gold":"news_query"}
+{"id":"massive-5245","lang":"fr","state":"définir la notification de nouvelle environnemental","gold":"news_query"}
+{"id":"massive-5339","lang":"fr","state":"condition de faible refroidissement","gold":"weather_query"}
+{"id":"massive-5411","lang":"fr","state":"quelles sont le populaire histoire sur c. n. n.","gold":"news_query"}
+{"id":"massive-5433","lang":"fr","state":"va-t-il pleuvoir plus tard","gold":"weather_query"}
+{"id":"massive-5488","lang":"fr","state":"commande une pizza en livraison","gold":"takeaway_order"}
+{"id":"massive-5524","lang":"fr","state":"la météo pour le moment","gold":"weather_query"}
+{"id":"massive-5570","lang":"fr","state":"trouve de la nourriture et commande","gold":"takeaway_order"}
+{"id":"massive-5640","lang":"fr","state":"montre la date","gold":"datetime_query"}
+{"id":"massive-5678","lang":"fr","state":"quel jour de la semaine est le quinze août","gold":"datetime_query"}
+{"id":"massive-5703","lang":"fr","state":"l'heure maintenant","gold":"datetime_query"}
+{"id":"massive-5721","lang":"fr","state":"montre-moi la météo de demain dans cette région","gold":"weather_query"}
+{"id":"massive-5722","lang":"fr","state":"afficher les prévisions de sept jours pour cette semaine","gold":"weather_query"}
+{"id":"massive-576","lang":"fr","state":"jouer tout sur playlist","gold":"play_music"}
+{"id":"massive-5820","lang":"fr","state":"réconforte mes oreilles avec jacques brel","gold":"play_music"}
+{"id":"massive-5840","lang":"fr","state":"j'ai besoin de commander de la nourriture chez papa john's","gold":"takeaway_order"}
+{"id":"massive-585","lang":"fr","state":"montre les dernières nouvelles","gold":"news_query"}
+{"id":"massive-5966","lang":"fr","state":"peux-tu s'il te plaît commander de la nourriture pour moi","gold":"takeaway_order"}
+{"id":"massive-6027","lang":"fr","state":"mettre les musiques préférées","gold":"play_music"}
+{"id":"massive-6041","lang":"fr","state":"salut olly éteins la lumière s'il te plait","gold":"iot_hue_lightoff"}
+{"id":"massive-6074","lang":"fr","state":"éteins la lumière de la chambre à neuf heures trente de l'après-midi","gold":"iot_hue_lightoff"}
+{"id":"massive-6116","lang":"fr","state":"info sur la météo de cette semaine","gold":"weather_query"}
+{"id":"massive-612","lang":"fr","state":"veuillez sonner le réveil à huit heures du matin samedi prochain","gold":"alarm_set"}
+{"id":"massive-6129","lang":"fr","state":"tiens moi au courant de l'actualité monde","gold":"news_query"}
+{"id":"massive-614","lang":"fr","state":"commence la playlist","gold":"play_music"}
+{"id":"massive-6410","lang":"fr","state":"ce qui se passe en france aujourd'hui","gold":"news_query"}
+{"id":"massive-6764","lang":"fr","state":"rappelle moi de laver les vitres","gold":"calendar_set"}
+{"id":"massive-6865","lang":"fr","state":"mettre en place une notification sur la réunion de demain à dix","gold":"calendar_set"}
+{"id":"massive-6959","lang":"fr","state":"rappelez-moi ma réunion une heure avant qu'elle ne commence","gold":"calendar_set"}
+{"id":"massive-7055","lang":"fr","state":"prendre rendez-vous avec matt à onze heures du matin jeudi","gold":"calendar_set"}
+{"id":"massive-712","lang":"fr","state":"je veux entendre les dernières nouvelles de c. n. n.","gold":"news_query"}
+{"id":"massive-730","lang":"fr","state":"éteindre les lumières","gold":"iot_hue_lightoff"}
+{"id":"massive-7455","lang":"fr","state":"rappelle moi la fête de demain","gold":"calendar_set"}
+{"id":"massive-7520","lang":"fr","state":"toujours rappel moi de mon déjeuner à quatorze heures","gold":"calendar_set"}
+{"id":"massive-7686","lang":"fr","state":"inclure mike et jack au calendrier du festival","gold":"calendar_set"}
+{"id":"massive-7808","lang":"fr","state":"rappelle moi j'emmène maman chez le coiffeur jeudi à dix heure du matin","gold":"calendar_set"}
+{"id":"massive-783","lang":"fr","state":"jouer les chansons d'amour","gold":"play_music"}
+{"id":"massive-7918","lang":"fr","state":"calendrier événement envoyer inviter bill malinda","gold":"calendar_set"}
+{"id":"massive-7919","lang":"fr","state":"nouvelle réunion ajouter bill et malinda en tant que participants","gold":"calendar_set"}
+{"id":"massive-8033","lang":"fr","state":"quel jour tombe pâques","gold":"datetime_query"}
+{"id":"massive-8085","lang":"fr","state":"je voudrais fixer une date pour cette semaine","gold":"calendar_set"}
+{"id":"massive-8140","lang":"fr","state":"définir un rappel pour le treizième que je déjeune avec dale","gold":"calendar_set"}
+{"id":"massive-8245","lang":"fr","state":"j'aurais besoin d'être informé des services religieux les dimanches à onze heures du matin","gold":"calendar_set"}
+{"id":"massive-826","lang":"fr","state":"quelle est la température extérieure actuelle","gold":"weather_query"}
+{"id":"massive-8261","lang":"fr","state":"envoyez-moi une alerte et une heure avant mon prochain rendez-vous","gold":"calendar_set"}
+{"id":"massive-8269","lang":"fr","state":"rappel de trente minutes sur rendez-vous pour mardi","gold":"calendar_set"}
+{"id":"massive-8300","lang":"fr","state":"enregistrer l'événement pour dix-sept heure à dix-huit heure le dix-huit mars","gold":"calendar_set"}
+{"id":"massive-832","lang":"fr","state":"salut quel sera le temps prévu pour demain","gold":"weather_query"}
+{"id":"massive-8343","lang":"fr","state":"on est mercredi","gold":"datetime_query"}
+{"id":"massive-8539","lang":"fr","state":"rappelle-moi","gold":"calendar_set"}
+{"id":"massive-86","lang":"fr","state":"quelle date est-il aujourd'hui","gold":"datetime_query"}
+{"id":"massive-8651","lang":"fr","state":"m'informer de l'événement dans mon agenda","gold":"calendar_set"}
+{"id":"massive-8731","lang":"fr","state":"définir une alarme de rappel répétitive pour l'événement facebook auquel je dois assister le sept avril","gold":"alarm_set"}
+{"id":"massive-8741","lang":"fr","state":"définir une alerte pour deux p. m.","gold":"alarm_set"}
+{"id":"massive-8882","lang":"fr","state":"faire une alarme pour la réunion avec bob à sept heures aujourd'hui","gold":"alarm_set"}
+{"id":"massive-89","lang":"fr","state":"pourrais-tu commander des sushis pour le dîner de ce soir","gold":"takeaway_order"}
+{"id":"massive-8977","lang":"fr","state":"définissez-moi simplement des rappels sur les paiements de factures en attente","gold":"calendar_set"}
+{"id":"massive-9062","lang":"fr","state":"peux-tu mettre l' anniversaire de lee le vingt deux juin","gold":"calendar_set"}
+{"id":"massive-939","lang":"fr","state":"régler mon réveil à sept heures du matin","gold":"alarm_set"}
+{"id":"massive-969","lang":"fr","state":"articles de presse sur un sujet particulier","gold":"news_query"}
+{"id":"massive-9738","lang":"fr","state":"pourrais-tu jouer la musique classique pour moi s'il te plaît","gold":"play_music"}
+{"id":"massive-997","lang":"fr","state":"éteindre la lumière du salon","gold":"iot_hue_lightoff"}
+{"id":"massive-999","lang":"fr","state":"pourrais-tu éteindre la lumière","gold":"iot_hue_lightoff"}

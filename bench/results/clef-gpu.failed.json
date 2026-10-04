@@ -1,0 +1,5 @@
+{
+  "label": "clef-gpu",
+  "device": "gpu",
+  "reason": "Not measured. NF4 + accelerate GPU/CPU offload fails (accelerate can't move bitsandbytes 4-bit layers; BF16 CPU layers don't fit the 26 GB VM). Full NF4 load on the 12 GB GPU with spill to system memory ran the 32 GB host out of RAM while quantizing, and the run was stopped."
+}

@@ -1,0 +1,5 @@
+{
+  "label": "clef-cpu",
+  "device": "cpu",
+  "reason": "Not run. Clef 27B is three times the size of Clef-flash, which already needed about 75 s per request on this CPU."
+}

@@ -1,4 +1,4 @@
-import { experimental_evaluate as evaluate } from "ai";
+import { experimental_evaluate as evaluate, type Experimental_EvaluationModel } from "ai";
 import { readEvaluationConfidence } from "../../../../lib/ai/confidence.ts";
 import { evaluatorModel } from "../../../../lib/ai/evaluator-model.ts";
 import type { ReasoningEffort } from "../../../../lib/ai/effort.ts";
@@ -23,9 +23,13 @@ export interface EvaluateEffortInput {
  *
  * `input.efforts` is used to build the shared state (`supportedEfforts`) and passed
  * straight through to `routeEffort` as the quantization ladder — one array, so the rungs
- * the model reasons about and the rungs the verdict can land on cannot drift apart.
+ * the model reasons about and the rungs the verdict can land on cannot drift apart. `model`
+ * defaults to the configured evaluator.
  */
-export async function evaluateEffort(input: EvaluateEffortInput): Promise<EffortVerdict> {
+export async function evaluateEffort(
+  input: EvaluateEffortInput,
+  model: Experimental_EvaluationModel = evaluatorModel,
+): Promise<EffortVerdict> {
   const state: EffortState = {
     prompt: input.prompt,
     assistantPurpose: input.assistantPurpose,
@@ -34,7 +38,7 @@ export async function evaluateEffort(input: EvaluateEffortInput): Promise<Effort
   };
 
   const { answers, providerMetadata } = await evaluate({
-    model: evaluatorModel,
+    model,
     state,
     questions: EFFORT_QUESTIONS,
   });

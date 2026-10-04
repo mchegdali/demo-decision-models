@@ -25,7 +25,13 @@
     "laya:build": "docker compose --env-file .env -f infra/laya/compose.yaml build",
     "laya:up": "docker compose --env-file .env -f infra/laya/compose.yaml up -d --wait",
     "laya:down": "docker compose --env-file .env -f infra/laya/compose.yaml down",
-    "laya:logs": "docker compose --env-file .env -f infra/laya/compose.yaml logs -f"
+    "laya:logs": "docker compose --env-file .env -f infra/laya/compose.yaml logs -f",
+    "clef:up": "pwsh -NoProfile -File bench/containers.ps1 -Run clef-flash-gpu -Action up",
+    "clef:down": "pwsh -NoProfile -File bench/containers.ps1 -Run clef-flash-gpu -Action down",
+    "bench:prepare": "uv run bench/datasets/prepare.py",
+    "bench:run": "pwsh -NoProfile -File bench/containers.ps1 -Action bench -Run",
+    "bench:jev": "node --env-file-if-exists=.env bench/run.ts --label jev-hosted --device hosted --base-url https://api.typesafe.ai/v1 --model-id jev-latest --api-key-env TYPESAFE_AI_API_KEY",
+    "bench:report": "node bench/report.ts && oxfmt docs/BENCHMARK_RESULTS.md"
   },
   "dependencies": {
     "@ai-sdk/openai": "4.0.70",

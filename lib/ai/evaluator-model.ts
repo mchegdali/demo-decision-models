@@ -1,41 +1,86 @@
 import { createTypeSafeAi } from "@ai-sdk/typesafe-ai";
+import type { Experimental_EvaluationModel as EvaluationModel } from "ai";
 import { requireEnv } from "../env.ts";
 
 /**
  * Which System One backend answers `experimental_evaluate` calls:
  * - `typesafe`: TypeSafe's hosted Jev (default).
  * - `laya`: self-hosted laya-serve (see infra/laya), which speaks the same /v1/systemone protocol.
+ * - `local`: any other self-hosted /v1/systemone server — Clef (infra/clef), Kev (infra/kev),
+ *   Nimble on Ollama — at `EVALUATOR_BASE_URL`, serving `EVALUATOR_MODEL_ID`.
  */
-export type EvaluatorBackend = "typesafe" | "laya";
+export type EvaluatorBackend = "typesafe" | "laya" | "local";
+
+const EVALUATOR_BACKENDS: readonly EvaluatorBackend[] = ["typesafe", "laya", "local"];
 
 function resolveEvaluatorBackend(): EvaluatorBackend {
   const value = process.env.EVALUATOR_BACKEND?.trim() || "typesafe";
-  if (value !== "typesafe" && value !== "laya") {
-    throw new Error(`Invalid EVALUATOR_BACKEND: ${value}. Expected "typesafe" or "laya".`);
+  if (!(EVALUATOR_BACKENDS as readonly string[]).includes(value)) {
+    throw new Error(
+      `Invalid EVALUATOR_BACKEND: ${value}. Expected one of: ${EVALUATOR_BACKENDS.join(", ")}.`,
+    );
   }
-  return value;
+  return value as EvaluatorBackend;
 }
 
 export const EVALUATOR_BACKEND = resolveEvaluatorBackend();
 
-/**
- * TypeSafe's flagship System One model, or Laya's root id, which laya-serve treats as
- * "let the router pick the English or multilingual checkpoint".
- */
-export const EVALUATOR_MODEL_ID =
-  EVALUATOR_BACKEND === "laya" ? "convaiinnovations/laya" : "jev-latest";
+export interface EvaluatorModelOptions {
+  /** Server root including the version segment, e.g. `http://localhost:8010/v1`. */
+  readonly baseURL: string;
+  readonly modelId: string;
+  /** Self-hosted servers only check it when configured to; the provider insists on one regardless. */
+  readonly apiKey?: string;
+  /** Swapped in by the benchmark to time each round trip. */
+  readonly fetch?: typeof globalThis.fetch;
+}
+
+/** A System One evaluation model on any /v1/systemone-compatible server. */
+export function createEvaluatorModel(options: EvaluatorModelOptions): EvaluationModel {
+  return createTypeSafeAi({
+    baseURL: options.baseURL,
+    apiKey: options.apiKey || "local",
+    fetch: options.fetch,
+  }).evaluationModel(options.modelId);
+}
+
+function configuredEvaluator(): { modelId: string; provider: ReturnType<typeof createTypeSafeAi> } {
+  switch (EVALUATOR_BACKEND) {
+    case "laya":
+      // Laya's root id, which laya-serve treats as "let the router pick the English or
+      // multilingual checkpoint".
+      return {
+        modelId: "convaiinnovations/laya",
+        provider: createTypeSafeAi({
+          baseURL: process.env.LAYA_BASE_URL?.trim() || "http://localhost:8000/v1",
+          // The provider insists on a key; laya-serve only checks it when LAYA_API_KEY is set.
+          apiKey: process.env.LAYA_API_KEY?.trim() || "laya-local",
+        }),
+      };
+    case "local":
+      return {
+        modelId: requireEnv("EVALUATOR_MODEL_ID").trim(),
+        provider: createTypeSafeAi({
+          baseURL: requireEnv("EVALUATOR_BASE_URL").trim(),
+          apiKey: process.env.EVALUATOR_API_KEY?.trim() || "local",
+        }),
+      };
+    case "typesafe":
+      // TypeSafe's flagship System One model.
+      return {
+        modelId: "jev-latest",
+        provider: createTypeSafeAi({ apiKey: requireEnv("TYPESAFE_AI_API_KEY") }),
+      };
+  }
+}
+
+const configured = configuredEvaluator();
+
+/** The model id `evaluatorModel` asks the configured backend for. */
+export const EVALUATOR_MODEL_ID = configured.modelId;
 
 /** Configured TypeSafe provider, exposed so callers can pick other model ids. */
-export const typeSafeAiProvider =
-  EVALUATOR_BACKEND === "laya"
-    ? createTypeSafeAi({
-        baseURL: process.env.LAYA_BASE_URL?.trim() || "http://localhost:8000/v1",
-        // The provider insists on a key; laya-serve only checks it when LAYA_API_KEY is set.
-        apiKey: process.env.LAYA_API_KEY?.trim() || "laya-local",
-      })
-    : createTypeSafeAi({
-        apiKey: requireEnv("TYPESAFE_AI_API_KEY"),
-      });
+export const typeSafeAiProvider = configured.provider;
 
 /** The default evaluator model used with `experimental_evaluate`. */
 export const evaluatorModel = typeSafeAiProvider.evaluationModel(EVALUATOR_MODEL_ID);

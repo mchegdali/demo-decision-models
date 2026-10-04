@@ -1,0 +1,18 @@
+# Normalize every text file to LF in the repo and the working tree, whatever the OS or
+# core.autocrlf setting, so Windows tools can't slip CRLF into diffs.
+* text=auto eol=lf
+
+# Windows-only scripts keep CRLF, which cmd.exe requires and Windows PowerShell expects.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary assets: never diff or convert.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.parquet binary
+*.safetensors binary

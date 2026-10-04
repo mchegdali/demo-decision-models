@@ -1,0 +1,5 @@
+{
+  "label": "kev-9b-cpu",
+  "device": "cpu",
+  "reason": "Not run. Same BF16-on-CPU setup as clef-flash-cpu (about 75 s per request), and Kev 4B on CPU in fp32 was already slow (p50 3.9 s, p95 11.8 s)."
+}

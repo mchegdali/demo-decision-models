@@ -1,4 +1,4 @@
-import { experimental_evaluate as evaluate } from "ai";
+import { experimental_evaluate as evaluate, type Experimental_EvaluationModel } from "ai";
 import { readEvaluationConfidence } from "../../../../lib/ai/confidence.ts";
 import { evaluatorModel } from "../../../../lib/ai/evaluator-model.ts";
 import { extractLocationCandidates } from "./candidates.ts";
@@ -17,15 +17,19 @@ export interface DetectFastToolInput {
  * the weather day and the place, over the same state. `policy.ts` then routes to handle/defer.
  *
  * The place is *selected* from substrings that plain code extracted from the prompt, so a
- * chosen place is always a literal piece of what the user typed.
+ * chosen place is always a literal piece of what the user typed. `model` defaults to the
+ * configured evaluator.
  */
-export async function detectFastTool(input: DetectFastToolInput): Promise<FastToolVerdict> {
+export async function detectFastTool(
+  input: DetectFastToolInput,
+  model: Experimental_EvaluationModel = evaluatorModel,
+): Promise<FastToolVerdict> {
   const candidates = extractLocationCandidates(input.prompt);
   const { question: location, placeByKey } = buildLocationQuestion(candidates);
 
   const state: FastToolState = { prompt: input.prompt, placeCandidates: candidates };
   const { answers, providerMetadata } = await evaluate({
-    model: evaluatorModel,
+    model,
     state,
     questions: { ...FAST_TOOL_QUESTIONS, location },
   });

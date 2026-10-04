@@ -1,0 +1,48 @@
+{"id":"fp01","en":"hello","fr":"bonjour","route":"handle:greeting"}
+{"id":"fp02","en":"hi there!","fr":"salut !","route":"handle:greeting"}
+{"id":"fp03","en":"hey, good morning","fr":"hey, bonjour","route":"handle:greeting"}
+{"id":"fp04","en":"good evening","fr":"bonsoir","route":"handle:greeting"}
+{"id":"fp05","en":"just say hello","fr":"dis juste bonjour","route":"handle:greeting"}
+{"id":"fp06","en":"Hello! How are you doing today?","fr":"Bonjour ! Comment ça va aujourd'hui ?","route":"handle:greeting"}
+{"id":"fp07","en":"what time is it?","fr":"quelle heure est-il ?","route":"handle:time"}
+{"id":"fp08","en":"what time is it in Tokyo?","fr":"quelle heure est-il à Tokyo ?","route":"handle:time","location":{"en":"Tokyo","fr":"Tokyo"}}
+{"id":"fp09","en":"current time in New York please","fr":"l'heure actuelle à New York s'il te plaît","route":"handle:time","location":{"en":"New York","fr":"New York"}}
+{"id":"fp10","en":"what's today's date?","fr":"on est quel jour aujourd'hui ?","route":"handle:time"}
+{"id":"fp11","en":"tell me the time in Rio de Janeiro","fr":"donne-moi l'heure à Rio de Janeiro","route":"handle:time","location":{"en":"Rio de Janeiro","fr":"Rio de Janeiro"}}
+{"id":"fp12","en":"what time is it right now in Sydney","fr":"il est quelle heure en ce moment à Sydney","route":"handle:time","location":{"en":"Sydney","fr":"Sydney"}}
+{"id":"fp13","en":"hi, what time is it in London?","fr":"salut, quelle heure est-il à Londres ?","route":"handle:time","location":{"en":"London","fr":"Londres"}}
+{"id":"fp14","en":"what's the weather like?","fr":"il fait quel temps ?","route":"handle:weather","when":"now"}
+{"id":"fp15","en":"what's the weather in Paris tomorrow","fr":"quel temps fera-t-il à Paris demain","route":"handle:weather","when":"tomorrow","location":{"en":"Paris","fr":"Paris"}}
+{"id":"fp16","en":"is it raining in Lyon right now?","fr":"est-ce qu'il pleut à Lyon en ce moment ?","route":"handle:weather","when":"now","location":{"en":"Lyon","fr":"Lyon"}}
+{"id":"fp17","en":"temperature in Montreal today","fr":"température à Montréal aujourd'hui","route":"handle:weather","when":"today","location":{"en":"Montreal","fr":"Montréal"}}
+{"id":"fp18","en":"will it be sunny this afternoon in Marseille?","fr":"est-ce qu'il fera beau cet après-midi à Marseille ?","route":"handle:weather","when":"today","location":{"en":"Marseille","fr":"Marseille"}}
+{"id":"fp19","en":"forecast for Brussels tomorrow","fr":"prévisions pour Bruxelles demain","route":"handle:weather","when":"tomorrow","location":{"en":"Brussels","fr":"Bruxelles"}}
+{"id":"fp20","en":"how cold is it in Quebec City?","fr":"il fait combien à Québec ?","route":"handle:weather","when":"now","location":{"en":"Quebec City","fr":"Québec"}}
+{"id":"fp21","en":"weather in geneva","fr":"météo à genève","route":"handle:weather","when":"now","location":{"en":"geneva","fr":"genève"}}
+{"id":"fp22","en":"do I need an umbrella tomorrow in Bordeaux?","fr":"j'ai besoin d'un parapluie demain à Bordeaux ?","route":"handle:weather","when":"tomorrow","location":{"en":"Bordeaux","fr":"Bordeaux"}}
+{"id":"fp23","en":"good morning! what's the temperature in Nice?","fr":"bonjour ! quelle température fait-il à Nice ?","route":"handle:weather","when":"now","location":{"en":"Nice","fr":"Nice"}}
+{"id":"fp24","en":"what will the weather be in Lyon this weekend?","fr":"quel temps fera-t-il ce weekend à Lyon ?","route":"defer","when":"later","location":{"en":"Lyon","fr":"Lyon"}}
+{"id":"fp25","en":"what was the weather like in Paris yesterday?","fr":"quel temps faisait-il à Paris hier ?","route":"defer","when":"earlier","location":{"en":"Paris","fr":"Paris"}}
+{"id":"fp26","en":"weather forecast for Toulouse next week","fr":"prévisions météo pour Toulouse la semaine prochaine","route":"defer","when":"later","location":{"en":"Toulouse","fr":"Toulouse"}}
+{"id":"fp27","en":"how much did it rain in Lille last night?","fr":"combien a-t-il plu à Lille la nuit dernière ?","route":"defer","when":"earlier","location":{"en":"Lille","fr":"Lille"}}
+{"id":"fp28","en":"hello, how do I configure stopWhen in the AI SDK?","fr":"bonjour, comment configurer stopWhen dans l'AI SDK ?","route":"defer"}
+{"id":"fp29","en":"What's the default port for Vite?","fr":"Quel est le port par défaut de Vite ?","route":"defer"}
+{"id":"fp30","en":"hi! can you explain how React hooks work?","fr":"salut ! tu peux m'expliquer comment marchent les hooks React ?","route":"defer"}
+{"id":"fp31","en":"what time zone does Node use for Date by default?","fr":"quel fuseau horaire Node utilise-t-il par défaut pour Date ?","route":"defer"}
+{"id":"fp32","en":"how do I add a timeout to a fetch call?","fr":"comment ajouter un timeout à un appel fetch ?","route":"defer"}
+{"id":"fp33","en":"what's the weather API used by this project and how do I call it?","fr":"quelle API météo ce projet utilise-t-il et comment l'appeler ?","route":"defer"}
+{"id":"fp34","en":"what time is it in Tokyo, and how do I format dates in JavaScript?","fr":"quelle heure est-il à Tokyo, et comment formater des dates en JavaScript ?","route":"defer","location":{"en":"Tokyo","fr":"Tokyo"}}
+{"id":"fp35","en":"compare the weather APIs of Open-Meteo and OpenWeather","fr":"compare les API météo d'Open-Meteo et d'OpenWeather","route":"defer"}
+{"id":"fp36","en":"write a cron expression that runs every day at 9am","fr":"écris une expression cron qui tourne tous les jours à 9h","route":"defer"}
+{"id":"fp38","en":"summarize the changelog of TypeScript 7","fr":"résume le changelog de TypeScript 7","route":"defer"}
+{"id":"fp39","en":"how does the London Underground timetable work on Sundays?","fr":"comment fonctionnent les horaires du métro de Londres le dimanche ?","route":"defer"}
+{"id":"fp40","en":"is Paris weather data available in the Open-Meteo archive API?","fr":"les données météo de Paris sont-elles disponibles dans l'API d'archive d'Open-Meteo ?","route":"defer"}
+{"id":"fp42","en":"what's the best time to visit Kyoto?","fr":"quelle est la meilleure période pour visiter Kyoto ?","route":"defer"}
+{"id":"fp43","en":"good morning, can you review my pull request?","fr":"bonjour, tu peux relire ma pull request ?","route":"defer"}
+{"id":"fp44","en":"set a timer for 10 minutes","fr":"mets un minuteur de 10 minutes","route":"defer"}
+{"id":"fp45","en":"how hot does it get in Seville in August?","fr":"il fait combien à Séville en août ?","route":"defer","when":"later","location":{"en":"Seville","fr":"Séville"}}
+{"id":"fp46","en":"what's the time difference between Paris and Montreal?","fr":"quel est le décalage horaire entre Paris et Montréal ?","route":"defer"}
+{"id":"fp47","en":"hey","fr":"coucou","route":"handle:greeting"}
+{"id":"fp48","en":"what day is it today?","fr":"quel jour sommes-nous ?","route":"handle:time"}
+{"id":"fp49","en":"is it windy in Brest today?","fr":"y a-t-il du vent à Brest aujourd'hui ?","route":"handle:weather","when":"today","location":{"en":"Brest","fr":"Brest"}}
+{"id":"fp50","en":"what time is it in Los Angeles?","fr":"quelle heure est-il à Los Angeles ?","route":"handle:time","location":{"en":"Los Angeles","fr":"Los Angeles"}}

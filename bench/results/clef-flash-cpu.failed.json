@@ -1,0 +1,5 @@
+{
+  "label": "clef-flash-cpu",
+  "device": "cpu",
+  "reason": "Stopped after 150 of 1917 items (3 h 9 min, 0 errors): about 75 s per request even with one question, so it was projected at 37+ h. Official BF16 weights; this CPU has no BF16 instructions. Clearly slow, so it was not run to the end. Cold start was 40.8 s."
+}
