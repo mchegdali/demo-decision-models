@@ -15,7 +15,7 @@ network round trip; the data center can therefore be picked by GPU stock and pri
   mount `/workspace`, no exposed ports, entrypoint `bash -c` and start command:
 
   ```sh
-  apt-get update && apt-get install -y --no-install-recommends curl xz-utils ca-certificates && mkdir -p /src && curl -fsSL https://codeload.github.com/mchegdali/demo-decision-models/tar.gz/$BENCH_REF | tar xz -C /src --strip-components=1 && exec bash /src/bench/pod/run.sh
+  apt-get update && apt-get install -y --no-install-recommends curl xz-utils ca-certificates libatomic1 && mkdir -p /src && curl -fsSL https://codeload.github.com/mchegdali/demo-decision-models/tar.gz/$BENCH_REF | tar xz -C /src --strip-components=1 && exec bash /src/bench/pod/run.sh
   ```
 
 - **`bench/pod/run.sh`** (on the pod): starts Ollama on the volume, installs Node/pnpm and the

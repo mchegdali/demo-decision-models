@@ -10,7 +10,8 @@
   copies them into bench/results/ and bench/logs/.
 
   Needs uv (for `uvx --from awscli aws`) and RUNPOD_S3_ACCESS_KEY / RUNPOD_S3_SECRET_KEY in .env.
-  Objects are probed by name, never listed: listing a volume that holds GBs of weights is slow.
+  Start it right after creating the pod: it first deletes that label's old results. Objects are
+  probed by name, never listed: listing a volume that holds GBs of weights is slow.
 
 .EXAMPLE
   ./bench/remote.ps1 -Label clef-ollama-gpu-24gb -VolumeId abc123xyz -DataCenter EUR-IS-1
@@ -44,6 +45,11 @@ function Get-Object([string]$Key, [string]$Destination) {
   New-Item -ItemType Directory -Force (Split-Path -Parent $Destination) | Out-Null
   & uvx @S3 s3 cp "s3://$VolumeId/$Key" $Destination --only-show-errors
   if ($LASTEXITCODE -ne 0) { throw "download of $Key failed" }
+}
+
+# A previous run's files would pass for this one's; the pod needs minutes before it writes its own.
+foreach ($key in "results/$Label.json", "results/$Label.failed.json") {
+  if (Test-Object $key) { & uvx @S3 s3 rm "s3://$VolumeId/$key" --only-show-errors }
 }
 
 $clock = [Diagnostics.Stopwatch]::StartNew()
