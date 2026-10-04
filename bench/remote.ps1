@@ -1,89 +1,67 @@
 <#
 .SYNOPSIS
-  Benchmarks a decision model on a remote Ollama server (a rented GPU pod) instead of a local
-  wslc container.
+  Waits for a RunPod benchmark run to finish and downloads its result and logs.
 
 .DESCRIPTION
-  The pod is created and deleted outside this script (RunPod); it must already run
-  ollama/ollama with port 11434 reachable at -OllamaUrl.
+  The run itself happens on the pod (bench/pod/run.sh, started by the bench-ollama template;
+  see bench/pod/README.md): Ollama and bench/run.ts share the pod, so latencies have no network
+  round trip. It writes results/<Label>.json (or <Label>.failed.json) and logs/<Label>.log to
+  the pod's network volume; this script polls for them through RunPod's S3-compatible API and
+  copies them into bench/results/ and bench/logs/.
 
-  Pulls the weights first (not timed, like containers.ps1 -Action pull), measures the network
-  round trip (p50 of 20 GET /api/version, reported with the run since every latency includes it),
-  times the first /v1/systemone answer (cold start = weight load + first decision), then runs
-  bench/run.ts with memory read from the server's /api/ps.
+  Needs uv (for `uvx --from awscli aws`) and RUNPOD_S3_ACCESS_KEY / RUNPOD_S3_SECRET_KEY in .env.
+  Objects are probed by name, never listed: listing a volume that holds GBs of weights is slow.
 
 .EXAMPLE
-  ./bench/remote.ps1 -Label clef-ollama-gpu-24gb -OllamaUrl http://1.2.3.4:40123 `
-    -ModelId clef:27b-q4_k_m -Gpu "RTX 4090 24GB"
+  ./bench/remote.ps1 -Label clef-ollama-gpu-24gb -VolumeId abc123xyz -DataCenter EUR-IS-1
 #>
 param(
   [Parameter(Mandatory)][string]$Label,
-  [Parameter(Mandatory)][string]$OllamaUrl,
-  [Parameter(Mandatory)][string]$ModelId,
-  [Parameter(Mandatory)][string]$Gpu,
-  [string]$ServerNotes = "ollama/ollama:0.35.1 OLLAMA_CONTEXT_LENGTH=4096 OLLAMA_KEEP_ALIVE=-1",
-  [int]$Limit = 0,
-  [string]$Tasks = "",
-  [int]$ReadyTimeoutSec = 1800
+  [Parameter(Mandatory)][string]$VolumeId,
+  [Parameter(Mandatory)][string]$DataCenter,
+  [int]$TimeoutMin = 180
 )
 
 $ErrorActionPreference = "Stop"
 $Root = Split-Path -Parent $PSScriptRoot
-$OllamaUrl = $OllamaUrl.TrimEnd("/")
-$BaseUrl = "$OllamaUrl/v1"
 
-function Wait-Server {
-  $clock = [Diagnostics.Stopwatch]::StartNew()
-  while ($clock.Elapsed.TotalSeconds -lt $ReadyTimeoutSec) {
-    try { $null = Invoke-RestMethod -Uri "$OllamaUrl/api/version" -TimeoutSec 10; return } catch { Start-Sleep -Seconds 5 }
+if (Test-Path "$Root\.env") {
+  foreach ($line in Get-Content "$Root\.env") {
+    if ($line -match '^\s*(RUNPOD_S3_[A-Z_]+)\s*=\s*(.*?)\s*$') { Set-Item "env:$($Matches[1])" $Matches[2] }
   }
-  throw "$Label : Ollama at $OllamaUrl not reachable within $ReadyTimeoutSec s"
+}
+if (-not $env:RUNPOD_S3_ACCESS_KEY -or -not $env:RUNPOD_S3_SECRET_KEY) { throw "RUNPOD_S3_ACCESS_KEY / RUNPOD_S3_SECRET_KEY are not set (.env)" }
+$env:AWS_ACCESS_KEY_ID = $env:RUNPOD_S3_ACCESS_KEY
+$env:AWS_SECRET_ACCESS_KEY = $env:RUNPOD_S3_SECRET_KEY
+$S3 = @("--from", "awscli", "aws", "--region", $DataCenter, "--endpoint-url", "https://s3api-$($DataCenter.ToLower()).runpod.io")
+
+function Test-Object([string]$Key) {
+  & uvx @S3 s3api head-object --bucket $VolumeId --key $Key *> $null
+  $LASTEXITCODE -eq 0
 }
 
-function Measure-RoundTrip {
-  $times = foreach ($i in 1..20) {
-    $clock = [Diagnostics.Stopwatch]::StartNew()
-    $null = Invoke-RestMethod -Uri "$OllamaUrl/api/version" -TimeoutSec 10
-    $clock.ElapsedMilliseconds
+function Get-Object([string]$Key, [string]$Destination) {
+  New-Item -ItemType Directory -Force (Split-Path -Parent $Destination) | Out-Null
+  & uvx @S3 s3 cp "s3://$VolumeId/$Key" $Destination --only-show-errors
+  if ($LASTEXITCODE -ne 0) { throw "download of $Key failed" }
+}
+
+$clock = [Diagnostics.Stopwatch]::StartNew()
+"[$Label] waiting for results/$Label.json on volume $VolumeId ($DataCenter)"
+while ($clock.Elapsed.TotalMinutes -lt $TimeoutMin) {
+  foreach ($name in "$Label.json", "$Label.failed.json") {
+    if (Test-Object "results/$name") {
+      Get-Object "logs/$Label.log" "$Root\bench\logs\runpod-$Label.log"
+      Get-Object "logs/$Label.ollama.log" "$Root\bench\logs\runpod-$Label.ollama.log"
+      Get-Object "results/$name" "$Root\bench\results\$name"
+      if ($name -eq "$Label.json") {
+        Remove-Item "$Root\bench\results\$Label.failed.json" -ErrorAction SilentlyContinue
+        "[$Label] downloaded bench/results/$name after $([int]$clock.Elapsed.TotalMinutes) min"
+        return
+      }
+      throw "[$Label] the run failed: $((Get-Content -Raw "$Root\bench\results\$name" | ConvertFrom-Json).reason). Log: bench/logs/runpod-$Label.log"
+    }
   }
-  ($times | Sort-Object)[10]
+  Start-Sleep -Seconds 60
 }
-
-function Wait-FirstDecision {
-  $clock = [Diagnostics.Stopwatch]::StartNew()
-  $body = @{ model = $ModelId; state = "hello"; questions = @{ greeting = @{ type = "noul"; instructions = "Is this a greeting?" } } } | ConvertTo-Json -Depth 5
-  while ($clock.Elapsed.TotalSeconds -lt $ReadyTimeoutSec) {
-    try {
-      $null = Invoke-RestMethod -Method Post -Uri "$BaseUrl/systemone" -ContentType "application/json" -Body $body -TimeoutSec 600
-      return $clock.ElapsedMilliseconds
-    } catch { Start-Sleep -Milliseconds 1000 }
-  }
-  throw "$Label gave no decision within $ReadyTimeoutSec s"
-}
-
-try {
-  Wait-Server
-  "[$Label] pulling $ModelId on $OllamaUrl"
-  $pull = [Diagnostics.Stopwatch]::StartNew()
-  $null = Invoke-RestMethod -Method Post -Uri "$OllamaUrl/api/pull" -ContentType "application/json" `
-    -Body (@{ model = $ModelId; stream = $false } | ConvertTo-Json) -TimeoutSec 3600
-  "[$Label] pulled in $([int]$pull.Elapsed.TotalSeconds) s"
-  $rtt = Measure-RoundTrip
-  "[$Label] network round trip p50: $rtt ms"
-  $coldStart = Wait-FirstDecision
-  "[$Label] cold start: $coldStart ms"
-  $nodeArgs = @("--env-file-if-exists=$Root\.env", "$Root\bench\run.ts", "--label", $Label, "--base-url", $BaseUrl,
-    "--model-id", $ModelId, "--device", "gpu", "--container", "runpod", "--ollama-url", $OllamaUrl,
-    "--cold-start-ms", $coldStart, "--baseline-vram-mib", "0",
-    "--notes", "$ServerNotes RunPod $Gpu, network RTT p50 $rtt ms")
-  if ($Limit -gt 0) { $nodeArgs += @("--limit", $Limit) }
-  if ($Tasks) { $nodeArgs += @("--tasks", $Tasks) }
-  node @nodeArgs
-  if ($LASTEXITCODE -ne 0) { throw "bench/run.ts failed for $Label" }
-  Remove-Item "$Root\bench\results\$Label.failed.json" -ErrorAction SilentlyContinue
-} catch {
-  New-Item -ItemType Directory -Force "$Root\bench\results" | Out-Null
-  @{ label = $Label; device = "gpu"; reason = "$_".Trim() } |
-    ConvertTo-Json | Set-Content -Encoding utf8 "$Root\bench\results\$Label.failed.json"
-  throw
-}
+throw "[$Label] no result after $TimeoutMin min"

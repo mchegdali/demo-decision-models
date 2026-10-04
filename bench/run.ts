@@ -8,7 +8,7 @@
  *
  * --api-key-env names an environment variable holding the key (e.g. TYPESAFE_AI_API_KEY for Jev).
  * --cold-start-ms / --baseline-vram-mib are measured by bench/containers.ps1 before this starts.
- * --ollama-url (a remote Ollama root, set by bench/remote.ps1) reads memory from its /api/ps
+ * --ollama-url (an Ollama root, set by bench/pod/run.sh on RunPod) reads memory from its /api/ps
  * instead of the local GPU and container.
  */
 import { mkdirSync, writeFileSync } from "node:fs";

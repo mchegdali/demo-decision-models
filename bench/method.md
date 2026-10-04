@@ -79,11 +79,13 @@ single question written once for every model (public tasks).
   what fits in 12 GB of VRAM and runs the remaining layers on the CPU.
 - **Clef on RunPod** (`clef-ollama-gpu-16gb` / `-24gb` / `-48gb`): the same `clef:27b-q4_k_m` on
   `ollama/ollama:0.35.1`, served from a rented RunPod Secure Cloud pod per GPU class (RTX A4000
-  16 GB, RTX 4090 24 GB in EUR-IS-1, L40S 48 GB in US-TX-4, the only L40S stock available)
-  through `bench/remote.ps1`. The bench client still runs on the desktop, so **every latency
-  includes the network round trip** to the pod, given in each run's notes (p50 of 20
-  `GET /api/version`). Weights are pulled before the run; cold start is weight load + first
-  decision, which depends on the host's disk. Peak VRAM / RAM come from Ollama's `/api/ps`
+  16 GB, RTX 4090 24 GB in EUR-IS-1, L40S 48 GB in US-TX-4, the only L40S stock available).
+  The bench client runs **on the pod** (`bench/pod/run.sh`, see `bench/pod/README.md`), so
+  latencies are loopback, like the desktop runs. Runs whose notes give a "network RTT p50" predate
+  this: their client ran on the desktop and **every latency includes that round trip** (p50 of 20
+  `GET /api/version`). Weights sit on a per-data-center RunPod network volume and are pulled
+  before the run; cold start is weight load from that volume + first decision, so it depends on
+  the volume's throughput. Peak VRAM / RAM come from Ollama's `/api/ps`
   (model memory on the GPU / offloaded to the CPU), not `nvidia-smi`. The model's own
   16384-token context overrides `OLLAMA_CONTEXT_LENGTH`, so all pods run at 16384. The three
   runs went in parallel, one pod each, and each pod was deleted when its run ended.
