@@ -8,8 +8,8 @@
 #   /workspace/results/<label>.json | <label>.failed.json
 #   /workspace/logs/<label>.log | <label>.ollama.log
 #
-# Env: BENCH_LABEL, BENCH_MODEL_ID, BENCH_GPU (required); BENCH_LIMIT, BENCH_TASKS, BENCH_NOTES,
-# BENCH_KEEP_POD=1 (don't delete the pod at the end) optional.
+# Env: BENCH_LABEL, BENCH_MODEL_ID, BENCH_GPU (required); BENCH_LIMIT, BENCH_TASKS, BENCH_NOTES
+# optional.
 set -euo pipefail
 
 : "${BENCH_LABEL:?}" "${BENCH_MODEL_ID:?}" "${BENCH_GPU:?}"
@@ -28,19 +28,8 @@ step="start"
 log() { echo "[$(date -u +%H:%M:%S)] [$BENCH_LABEL] $*"; }
 now_ms() { date +%s%3N; }
 
-# Removes this pod (billing stops) with the key RunPod injects into every pod.
-remove_pod() {
-  [ "${BENCH_KEEP_POD:-0}" = 1 ] && { log "BENCH_KEEP_POD=1, pod kept"; return; }
-  if [ -n "${RUNPOD_POD_ID:-}" ] && [ -n "${RUNPOD_API_KEY:-}" ] &&
-    curl -fsS -X DELETE -H "Authorization: Bearer $RUNPOD_API_KEY" \
-      "https://rest.runpod.io/v1/pods/$RUNPOD_POD_ID" >/dev/null; then
-    log "pod removal requested"
-  else
-    log "could not remove pod $RUNPOD_POD_ID; delete it from RunPod"
-  fi
-  sleep infinity
-}
-
+# The pod can't delete itself (its injected RUNPOD_API_KEY gets 403), and RunPod restarts a
+# container that exits, which would rerun the bench: idle until bench/remote.ps1's caller deletes it.
 on_exit() {
   local status=$?
   if [ "$status" -ne 0 ]; then
@@ -51,7 +40,8 @@ on_exit() {
       "$BENCH_LABEL" "${reason//\"/\\\"}" >"$VOLUME/results/$BENCH_LABEL.failed.json"
     log "FAILED during $step; see logs/$BENCH_LABEL.log"
   fi
-  remove_pod
+  log "finished; delete pod ${RUNPOD_POD_ID:-}"
+  sleep infinity
 }
 trap on_exit EXIT
 
@@ -68,7 +58,7 @@ if [ ! -x "$node_dir/bin/node" ]; then
   log "installing Node $node_version into the volume"
   mkdir -p "$node_dir.tmp"
   curl -fsSL "https://nodejs.org/dist/$node_version/node-$node_version-linux-x64.tar.xz" |
-    tar xJ -C "$node_dir.tmp" --strip-components=1
+    tar xJ -C "$node_dir.tmp" --strip-components=1 --no-same-owner # the volume refuses chown
   mv "$node_dir.tmp" "$node_dir"
 fi
 pnpm_version="$(sed -n 's/.*"packageManager": "pnpm@\([^"]*\)".*/\1/p' "$ROOT/package.json")"
